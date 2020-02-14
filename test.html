@@ -318,23 +318,32 @@ return  startresult;
 }
 
 start(minute,hour,second);
-console.log(minute,' minute');
-console.log(minute/60,' minute buffer');
 
-mind=jQuery('body>style:nth-child(2)').html()
+setInterval(function(){ 
+  start(minute,hour,second);
+  //console.log(startresult[0]);
+  //console.log(startresult[1]);
+  //console.log(startresult[2]);
+
+}, 3000);
+
+
+//setInterval(function(){ alert("Hello"); }, 3000);
+
+mind=jQuery('head > style:nth-child(2)').html()
 mindd=mind.replace('ZZ',startresult[0])
 mindd=mindd.replace('XX',360+startresult[0])
-jQuery('body>style:nth-child(2)').html(mindd)
+jQuery('head > style:nth-child(2)').html(mindd)
 
-mind=jQuery('body>style:nth-child(3)').html()
+mind=jQuery('head > style:nth-child(3)').html()
 mindd=mind.replace('ZZ',startresult[1])
 mindd=mindd.replace('XX',360+startresult[1])
-jQuery('body>style:nth-child(3)').html(mindd)
+jQuery('head>style:nth-child(3)').html(mindd)
 
-mind=jQuery('body>style:nth-child(4)').html()
+mind=jQuery('head>style:nth-child(4)').html()
 mindd=mind.replace('ZZ',startresult[2])
 mindd=mindd.replace('XX',360+startresult[2])
-jQuery('body>style:nth-child(4)').html(mindd)
+jQuery('head>style:nth-child(4)').html(mindd)
 
 console.log(startresult);
 
