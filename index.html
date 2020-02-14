@@ -468,20 +468,20 @@ return 	startresult;
 start(minute,hour,second);
 
 
-mind=$('body>style:nth-child(6)').html()
+mind=$('head>style:nth-child(7)').html()
 mindd=mind.replace('ZZ',startresult[0])
 mindd=mindd.replace('XX',360+startresult[0])
-$('body>style:nth-child(6)').html(mindd)
+$('head>style:nth-child(7)').html(mindd)
 
-mind=$('body>style:nth-child(7)').html()
+mind=$('head>style:nth-child(8)').html()
 mindd=mind.replace('ZZ',startresult[1])
 mindd=mindd.replace('XX',360+startresult[1])
-$('body>style:nth-child(7)').html(mindd)
+$('head>style:nth-child(8)').html(mindd)
 
-mind=$('body>style:nth-child(8)').html()
+mind=$('head>style:nth-child(9)').html()
 mindd=mind.replace('ZZ',startresult[2])
 mindd=mindd.replace('XX',360+startresult[2])
-$('body>style:nth-child(8)').html(mindd)
+$('head>style:nth-child(9)').html(mindd)
 
 console.log(startresult);
 
