@@ -1,10 +1,343 @@
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/demo.js"></script>
- 
-<div id="text"></div>
- 
-<script>
- $().ready(function() {
-   $("#text").html("Text added by jQuery code.");
+<!-- 
+https://github.com/bryanc00k94/-RPI2_MorningDisplay.git
+https://readwrite.com/2014/06/27/raspberry-pi-web-server-website-hosting/
+
+https://opensource.com/article/18/2/how-configure-apache-web-server
+-->
+<style>
+  body{
+    bkackground-color:black;
+    height:100vh;
+    display:flex;
+    align-items:center;     
+    justify-content:center;
+  
+  }
+  /*
+  =================
+  */
+  .container1,.container2{
+    border-radius:50%;
+    border:1px solid black;
+  }
+  /*
+  =================
+  */
+  .container{
+    border-radius:50%;
+    border:20px solid #7c05e9;
+  }
+  .outter{
+    position:relative;
+    background-color:black;
+    color:white;
+    width:300px;
+    height:300px; 
+    border-radius:50%;
+    border:10px solid white;
+  }
+  .figure{font-size:2em;
+  font-family: Rock Sdalt;}
+
+  .T1{position:absolute;top:7%;right:22.5%;}
+  .T2{position:absolute;top:21%;right:8%;}
+  .T3{position:absolute;top:45%;right:0%;}
+  .T4{position:absolute;bottom:21%;right:8%;}
+  .T5{position:absolute;bottom:7%;right:22.5%;}
+  .T6{position:absolute;bottom:0%;right:45%;
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+       font-size:1.5em;
+  }
+  .T7{position:absolute;bottom:7%;left:22.5%;}
+  .T8{position:absolute;bottom:21%;left:8%;}
+  .T9{position:absolute;top:45%;left:0%;}
+  .T10{position:absolute;top:21%;left:8%;}
+  .T11{position:absolute;top:7%;left:22.5%;}
+  .T12{position:absolute;top:0%;right:45%;}
+
+  .Hands{
+    position:absolute;
+    top:50%;
+    left:50%;
+    height:150px;
+    width:4px;
+  }
+  .dot{
+    background-color:white;
+    border-radius:50%;
+    position:absolute;
+    height:20px;
+    width:20px;
+    top:-5%;
+    left:-10px;
+  }
+  .second{
+    position:absolute;
+    top:0%;
+    left:50%;
+    background-color:red;
+    height:70%;
+    animation-name: second;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+    animation-iteration-count:infinite;
+  }
+  .minute{
+    position:absolute;
+    top:0%;
+    left:50%;
+    background-color:green;
+    height:97%;
+    animation-name: minute;
+    animation-duration: 3600s;
+    animation-timing-function: linear;
+    animation-iteration-count:infinite;
+  }
+  .hour{
+    position:absolute;
+    top:0%;
+    left:50%;
+    background-color:blue;
+    height:97%;
+    animation-name: hour;
+    animation-duration: 43200s;
+    animation-timing-function: linear;
+    animation-iteration-count:infinite;
+  }
+</style>
+<style>
+    @keyframes second{
+    0%{
+       transform: rotatez(ZZdeg);
+        transform-origin: 0% 0%  ;
+    }
+    100%{
+       transform: rotatez(XXdeg);
+       transform-origin: 0% 0%  ;
+    }
+  }  
+</style>
+<style>
+  @keyframes minute{
+    0%{
+       transform: rotatez(ZZdeg);
+        transform-origin: 0% 0%  ;
+    }
+    100%{
+       transform: rotatez(XXdeg);
+       transform-origin: 0% 0%  ;
+    }
+  }    
+</style>
+<style>
+    @keyframes hour{
+    0%{
+       transform: rotatez(ZZdeg);
+        transform-origin: 0% 0%  ;
+    }
+    100%{
+       transform: rotatez(XXdeg);
+       transform-origin: 0% 0%  ;
+    }
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class="container1">
+<div class="container">
+  
+    <div class="container2">
+    <div class="outter">
+      <div class="Hands">
+        <div class="second">&nbsp;</div>
+        <div class="minute">&nbsp;</div>
+        <div class="hour">&nbsp;</div>
+        <div class="dot">&nbsp;</div>
+      </div>
+      
+      <div class="T12 figure">&nbsp;12&nbsp;</div>
+      <div class="T1 figure">&nbsp;1&nbsp;</div>
+      <div class="T2 figure">&nbsp;2&nbsp;</div>
+      <div class="T3 figure">&nbsp;3&nbsp;</div>
+      <div class="T4 figure">&nbsp;4&nbsp;</div>
+      <div class="T5 figure">&nbsp;5&nbsp;</div>
+      <div class="T6 figure">Six</div>
+      <div class="T7 figure">&nbsp;7&nbsp;</div>
+      <div class="T8 figure">&nbsp;8&nbsp;</div>
+      <div class="T9 figure">&nbsp;9&nbsp;</div>
+      <div class="T10 figure">&nbsp;10&nbsp;</div>
+      <div class="T11 figure">&nbsp;11&nbsp;</div>
+  </div>
+</div>
+</div>
+</div>
+
+<style>
+body{background-color:black}
+/*#7c05e9*/
+
+/*
+jQuery(document).ready(function(){
+var date=new Date();
+var minute=date.getMinutes();
+var second=date.getSeconds();
+var hour=date.getHours();
+
+var startresult=[];
+var minuteStart=0;
+var secondStart=0;
+var hourStart=0;
+
+function start(minute,hour,second){
+  if (second<=30){
+    secondStart=-180+(-6*second); 
+    startresult.push(secondStart);
+  }
+  else {
+    secondStart=-360+(6*(second-30));
+    startresult.push(secondStart);
+  };
+
+  if (minute<=30){
+    minuteStart=-180+(6*minute);  
+    startresult.push(minuteStart);
+  }
+  else {
+    minuteStart=-360+(6*(minute-30));
+    startresult.push(minuteStart);
+  };
+
+
+    if (hour<=6){
+      hourStart=-180+(-30*hour);  
+      startresult.push(hourStart);
+    }
+    else if (hour<=12) {
+      hourStart=-360+(30*(hour-6)); 
+      startresult.push(hourStart);
+    }
+    else if (hour<=12) {
+      hourStart=-180+(-30*(hour-12)); 
+      startresult.push(hourStart);
+    }
+    else {
+      hourStart=-360+(30*(hour-18));  
+      startresult.push(hourStart);
+    };
+
+
+
+return  startresult;
+
+}
+
+start(minute,hour,second);
+
+
+mind=jQuery('body>style:nth-child(2)').html()
+mindd=mind.replace('ZZ',startresult[0])
+mindd=mindd.replace('XX',360+startresult[0])
+jQuery('body>style:nth-child(2)').html(mindd)
+
+mind=jQuery('body>style:nth-child(3)').html()
+mindd=mind.replace('ZZ',startresult[1])
+mindd=mindd.replace('XX',360+startresult[1])
+jQuery('body>style:nth-child(3)').html(mindd)
+
+mind=jQuery('body>style:nth-child(4)').html()
+mindd=mind.replace('ZZ',startresult[2])
+mindd=mindd.replace('XX',360+startresult[2])
+jQuery('body>style:nth-child(4)').html(mindd)
+
+console.log(startresult);
+
 });
+
+*/
+</style> 
+
+
+<script type="text/javascript">
+  
+  jQuery(document).ready(function(){
+var date=new Date();
+var minute=date.getMinutes();
+var second=date.getSeconds();
+var hour=date.getHours();
+
+var startresult=[];
+var minuteStart=0;
+var secondStart=0;
+var hourStart=0;
+
+function start(minute,hour,second){
+  if (second<=30){
+    secondStart=-180+(-6*second); 
+    startresult.push(secondStart);
+  }
+  else {
+    secondStart=-360+(6*(second-30));
+    startresult.push(secondStart);
+  };
+
+  if (minute<=30){
+    minuteStart=-180+(6*minute);  
+    startresult.push(minuteStart);
+  }
+  else {
+    minuteStart=-360+(6*(minute-30));
+    startresult.push(minuteStart);
+  };
+
+
+    if (hour<=6){
+      hourStart=-180+(-30*hour);  
+            hourStart=hourStart+30*(minute/60);
+      startresult.push(hourStart);
+    }
+    else if (hour<=12) {
+      hourStart=-360+(30*(hour-6)); 
+            hourStart=hourStart+30*(minute/60);
+      startresult.push(hourStart);
+    }
+    else if (hour<=12) {
+      hourStart=-180+(-30*(hour-12)); 
+            hourStart=hourStart+30*(minute/60);
+      startresult.push(hourStart);
+    }
+    else {
+      hourStart=-360+(30*(hour-18));  
+            hourStart=hourStart+30*(minute/60);
+      startresult.push(hourStart);
+    };
+
+
+
+return  startresult;
+
+}
+
+start(minute,hour,second);
+console.log(minute,' minute');
+console.log(minute/60,' minute buffer');
+
+mind=jQuery('body>style:nth-child(2)').html()
+mindd=mind.replace('ZZ',startresult[0])
+mindd=mindd.replace('XX',360+startresult[0])
+jQuery('body>style:nth-child(2)').html(mindd)
+
+mind=jQuery('body>style:nth-child(3)').html()
+mindd=mind.replace('ZZ',startresult[1])
+mindd=mindd.replace('XX',360+startresult[1])
+jQuery('body>style:nth-child(3)').html(mindd)
+
+mind=jQuery('body>style:nth-child(4)').html()
+mindd=mind.replace('ZZ',startresult[2])
+mindd=mindd.replace('XX',360+startresult[2])
+jQuery('body>style:nth-child(4)').html(mindd)
+
+console.log(startresult);
+
+});
+
 </script>
