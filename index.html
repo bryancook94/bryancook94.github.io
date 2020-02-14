@@ -410,7 +410,7 @@ body{
 </style>
 
 <script>
-jQuery(document).ready(function(){
+$(document).ready(function(){
 var date=new Date();
 var minute=date.getMinutes();
 var second=date.getSeconds();
@@ -467,20 +467,20 @@ return 	startresult;
 start(minute,hour,second);
 
 
-mind=jQuery('body>style:nth-child(6)').html()
+mind=$('body>style:nth-child(6)').html()
 mindd=mind.replace('ZZ',startresult[0])
 mindd=mindd.replace('XX',360+startresult[0])
-jQuery('body>style:nth-child(6)').html(mindd)
+$('body>style:nth-child(6)').html(mindd)
 
-mind=jQuery('body>style:nth-child(7)').html()
+mind=$('body>style:nth-child(7)').html()
 mindd=mind.replace('ZZ',startresult[1])
 mindd=mindd.replace('XX',360+startresult[1])
-jQuery('body>style:nth-child(7)').html(mindd)
+$('body>style:nth-child(7)').html(mindd)
 
-mind=jQuery('body>style:nth-child(8)').html()
+mind=$('body>style:nth-child(8)').html()
 mindd=mind.replace('ZZ',startresult[2])
 mindd=mindd.replace('XX',360+startresult[2])
-jQuery('body>style:nth-child(8)').html(mindd)
+$('body>style:nth-child(8)').html(mindd)
 
 console.log(startresult);
 
