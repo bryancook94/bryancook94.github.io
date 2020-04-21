@@ -6,9 +6,9 @@
   <title>Document</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rock+Salt&display=swap" rel="stylesheet">
+<!--
   <link rel="stylesheet" type="text/css" href="./css/mystyle.css">
+-->
   <script type="text/javascript">
     var menu=0;
 function myFunction(x) {
@@ -50,7 +50,7 @@ function myFunction(x) {
               <a href="https://codepen.io/Bryan_Cook" class="fa fa-codepen"></a>
             </div>
             <div id="linkedin" class="icon">
-              <a href="https://www.linkedin.com/feed/" class="fa fa-linkedin"></a>
+              <a href="mailto:www.cookbryan94@gmail.com" class="fa fa-google"></a>
             </div>
       </div>
     </div>
@@ -117,7 +117,6 @@ function myFunction(x) {
     top:0;
     left:0;
     font-size: 1em;
-    font-family: 'Rock Salt', cursive;
   }
 
   .option0{
@@ -131,7 +130,7 @@ function myFunction(x) {
     width:50px;
     height:10px;
     margin:2px;
-    background-color:lime;
+    background-color:white;
     transition: 0.4s;
 
   }
@@ -143,12 +142,12 @@ function myFunction(x) {
     xbackground:red;
   }
   a{
-    color:lime;
+    color:white;
     text-decoration:none;
     font-size:2em;
   }
   a:hover{
-    color:lime;
+    color:white;
     opacity:0.5;
     text-decoration:none;
   }
@@ -156,7 +155,7 @@ function myFunction(x) {
   .change .menubar1 {
     -webkit-transform: rotate(-45deg) translate(-10px, 6px);
     transform: rotate(-45deg) translate(-10px, 6px);
-    background:lime;
+    background:red;
   }
 
   .change .menubar2 {opacity: 0;}
@@ -164,13 +163,13 @@ function myFunction(x) {
   .change .menubar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
-    background:lime;
+    background:red;
   }
 
   p[id^="under"]{
     height:2px;
     transition:0.15s;
-    border-bottom:5px lime solid;
+    border-bottom:5px red solid;
   }
 
   #mainContent{
@@ -214,7 +213,7 @@ function myFunction(x) {
     background-size:cover;
     position:absolute;
     margin-left:-5px;
-    animation-name: animation1;
+    animation-name: animation1x;
     animation-timing-function:linear;
     animation-duration:1s;
     animation-fill-mode:forwards;
@@ -224,7 +223,7 @@ function myFunction(x) {
     background-size:cover;
     position:absolute;
     left:33.33%;
-    animation-name: animation2;
+    animation-name: animation2x;
     animation-timing-function:linear;
     animation-duration:1.25s;
     animation-fill-mode:forwards;
@@ -235,7 +234,7 @@ function myFunction(x) {
     position:absolute;
     right:0%;
     margin-right:0px;
-    animation-name: animation3;
+    animation-name: animation3x;
     animation-timing-function:linear;
     animation-duration:1.5s;
     animation-fill-mode:forwards;
@@ -245,7 +244,7 @@ function myFunction(x) {
     position:absolute;
     bottom:0%;
     right:0%;
-    height:10vh;
+    height:9vh;
     width:20vw;
     margin-right:0px;
     background:black;
@@ -254,39 +253,50 @@ function myFunction(x) {
     align-items:center;
   }
   .fa-facebook,#facebook {
-    background: transparent;
-    color: lime;
+    background: #3B5998;
+    color: white;
     height:100%;
     text-decoration: none;
   }
   .fa-codepen,#codepen {
-    color: lime;
+    background: #fff;
+    color: black;
     height:100%;
     text-decoration: none;
   }
-  .fa-linkedin,#linkedin {
-    background: #transparent;
-    color: lime;
+  .fa-google,#linkedin {
+    background: #dd4b39;
+    color: white;
     height:100%;
     text-decoration: none;
   }
   .icon{
     width:100%;
+    height:inherit;
     display:flex;
     justify-content:center;
     font-size:2em;
     overflow-y:hidden;
-    border:0.5px solid rgba(255,255,255,0.6);
+    margin:2px;
+    /*border:0.5px transparent rgba(255,255,255,0.6);*/
     opacity:0.5;
   }
-  .fa{
-    display:flex;
-    justify-content:center;
-    margin:50%;
-  }
   .fa:hover{
-    color: lime;
+   color: white;
    font-size:1.2em;
+  }
+  .fa-codepen:hover{
+   color: black;
+   font-size:1.2em;
+  }
+
+  .icon a{
+    height:auto;
+  }
+  .fa{
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
   }
   @keyframes animation1 {
     from {
@@ -314,7 +324,7 @@ function myFunction(x) {
     }
   }
   #footerContainer{
-    color:lime;
+    color:white;
     opacity:0.5;
     height:15vh;
     width:100%;
@@ -324,6 +334,5 @@ function myFunction(x) {
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    font-family: 'Rock Salt', cursive;
   }
 </style>
