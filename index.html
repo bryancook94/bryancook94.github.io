@@ -26,7 +26,7 @@ function myFunction(x) {
   <div id="menuContent" class="menuContent menuContentChange">
     <div id="option1" class="option1"><a href="">About</a><p id="under1"><p></div>
     <div id="option2" class="option2"><a href="">Projects</a><p id="under2"><p></div>
-    <div id="option3" class="option3"><a href="">Games</a><p id="under3"><p></div>
+    <div id="option3" class="option3"><a href="./darts">Games</a><p id="under3"><p></div>
   </div>
 
   <div id="mainContent" class="mainContent">
@@ -106,7 +106,8 @@ function myFunction(x) {
     float:left;
     padding-top:5vh;
     height:100vh;
-    background:rgba(0,230,0,0.8);
+    background: rgba(0,0,0,0.8);
+    border-right:1px grey solid;
     overflow-x: hidden;
     z-index:1;
     justify-content:center;
@@ -145,12 +146,12 @@ function myFunction(x) {
     xbackground:red;
   }
   a{
-    color:black;
+    color:lime;
     text-decoration:none;
     font-size:2em;
   }
   a:hover{
-    color:black;
+    color:lime;
     opacity:0.5;
     text-decoration:none;
   }
@@ -172,7 +173,7 @@ function myFunction(x) {
   p[id^="under"]{
     height:2px;
     transition:0.15s;
-    border-bottom:5px black solid;
+    border-bottom:5px lime solid;
   }
 
   #mainContent{
