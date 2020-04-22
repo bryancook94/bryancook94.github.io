@@ -102,7 +102,7 @@
              <div class="main2a" onclick="play()"><span class="option fas fa-play"></span></div>
              <div class="main2b" onclick="reload()" id="main2b"><span class="option fas fa-recycle"></span></div>
              <div class="main2" onclick="screen()" id="main2"><span class="option fas fa-arrows-alt"></span></div>
-             <div class="main2c" onclick="camera()"><span class="option fas fa-camera"></span></div>
+             <div class="main2c" onclick="random()"><span class="option fas fa-random"></span></div>
            </div>
            <!-- main2 -->
 
@@ -309,6 +309,7 @@
   reset=1;
   regionColor='';
   regionId='';
+  rand=1;
   var turn=1;
 
 
@@ -324,8 +325,7 @@ function toggle(){
   }
 };
 
-function cal(score,LastLetter,turn){
-
+function cal(score,LastLetter,turn,x=0){
         if (LastLetter=='S'){
             combine=Number(score)*1;
             k=document.getElementById("playDataCurrent"+turn+"").innerHTML;
@@ -340,8 +340,20 @@ function cal(score,LastLetter,turn){
                 regionColor=$("#"+regionId+"").css("fill");
                 $("#"+regionId+"").css("fill","lime");
 
-            document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-combine;
-            document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+combine+"</div>");
+            /*adding section for random*/
+            //alert(regionId);
+            /*adding section for random*/
+            if(x!==0){
+              document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-1;
+              document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+1+"</div>");
+            }
+            else {
+              document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-combine;
+              document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+combine+"</div>");
+            }
+            /*adding section for random*/
+            /*adding section for random*/
+
         }
         else if (LastLetter=='D'){
             combine=Number(score)*2;
@@ -357,8 +369,22 @@ function cal(score,LastLetter,turn){
               regionColor=$("#"+regionId+"").css("fill");
               $("#"+regionId+"").css("fill","lime");
 
+              $("#"+regionId+"").css("fill","lime");
+
+              /*adding section for random*/
+              //alert(regionId);
+              /*adding section for random*/
+          if(x!==0){
+            document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-2;
+            document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+2+"</div>");
+          }
+          else {
             document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-combine;
             document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+combine+"</div>");
+          }
+          /*adding section for random*/
+          /*adding section for random*/
+
         }
         else if (LastLetter=='T'){
             combine=Number(score)*3;
@@ -374,8 +400,22 @@ function cal(score,LastLetter,turn){
               regionColor=$("#"+regionId+"").css("fill");
               $("#"+regionId+"").css("fill","lime");
 
+              $("#"+regionId+"").css("fill","lime");
+
+            /*adding section for random*/
+            //alert(regionId);
+            /*adding section for random*/
+          if(x!==0){
+            document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-3;
+            document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+3+"</div>");
+          }
+          else {
             document.getElementById("playDataCurrent"+turn+"").innerHTML=Number(k)-combine;
             document.getElementById("insert"+turn+"").insertAdjacentHTML("afterend","<div class='playDataScores'>"+combine+"</div>");
+          }
+          /*adding section for random*/
+          /*adding section for random*/
+
         }
 
   }
@@ -428,10 +468,12 @@ function cog(){
 function reload(){
         window.location=window.location;
                 }
+
 function play(){
   document.getElementById('playDataCurrent1').innerHTML="301";
   document.getElementById('playDataCurrent2').innerHTML="301";
  }
+
 fullscreen=1;
 function screen(){
   if(fullscreen==1){
@@ -444,6 +486,64 @@ function screen(){
   }
 
  }
+
+function returnIDRand(id,letter){
+   clik=document.getElementById(id);
+   data=clik.textContent;
+   LastLetter=letter;
+
+     if (reset==0){
+       reset=1;
+       score=score-score;
+            }
+   score=data.substring(1,);
+   cal(score,LastLetter,turn,1);
+
+}
+
+
+ function random(){
+   //setting global var rand=1 then doing this to execute only once;
+   if (rand!==0){
+     document.getElementById("playDataCurrent1").innerHTML=10;
+     document.getElementById("playDataCurrent2").innerHTML=10;
+   }
+   rand=0;
+
+    jQuery('.MFC2').text('S'+(Math.floor(Math.random() * 21)));
+    jQuery('.MFC5').text('D'+(Math.floor(Math.random() * 21)));
+    jQuery('.MFC8').text('T'+(Math.floor(Math.random() * 21)));
+
+    jQuery('.MFC2').attr('id','MFC'+jQuery('.MFC2').text().substring(1,));
+    jQuery('.MFC5').attr('id','MFC'+jQuery('.MFC5').text().substring(1,));
+    jQuery('.MFC8').attr('id','MFC'+jQuery('.MFC8').text().substring(1,));
+
+    jQuery('.MFC2').attr('onclick','returnIDRand(this.id,"S")');
+    jQuery('.MFC5').attr('onclick','returnIDRand(this.id,"D")');
+    jQuery('.MFC8').attr('onclick','returnIDRand(this.id,"T")');
+
+
+    jQuery('.MFC2').css('grid-area','1/4/4/10');
+    jQuery('.MFC5').css('grid-area','4/4/7/10');
+    jQuery('.MFC8').css('grid-area','7/4/10/10');
+    jQuery('.MFCEnt').css('grid-area','10/4/13/7');
+    jQuery('.MFCSetting').css('grid-area','10/7/13/10');
+
+    jQuery('.MFC1').css('display','none');
+    jQuery('.MFC3').css('display','none');
+    jQuery('.MFC4').css('display','none');
+    jQuery('.MFC6').css('display','none');
+    jQuery('.MFC7').css('display','none');
+    jQuery('.MFC9').css('display','none');
+    jQuery('.MFCS').css('display','none');
+    jQuery('.MFCD').css('display','none');
+    jQuery('.MFCT').css('display','none');
+    jQuery('.MFC0').css('display','none');
+    jQuery('.MFCDel').css('display','none');
+
+    jQuery('.MFCSetting').click();
+                 }
+
 
 
  </script>
