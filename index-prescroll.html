@@ -6,6 +6,9 @@
   <title>Document</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--
+  <link rel="stylesheet" type="text/css" href="./css/mystyle.css">
+-->
   <script type="text/javascript">
     var menu=0;
 function myFunction(x) {
@@ -18,8 +21,6 @@ function myFunction(x) {
   </script>
 </head>
 <body style="border:collapse;margin:0px;padding:0px;">
-  <button onclick="back()" style="display:none" id="back">back</button>
-  <button onclick="full()" style="display:none" id="full">full</button>
 
 
   <div id="menuContent" class="menuContent menuContentChange">
@@ -37,12 +38,10 @@ function myFunction(x) {
 
     <div id="bodyContainer">
     <div id="bcxcontainer">
-      <div class="img img1" id="img1"></div>
-      <div class="img img2" id="img2"></div>
-      <div class="img img3" id="img3"></div>
-      <div class="img img4" id="img4"></div>
-      <div class="img img5" id="img5"></div>
-      <div class="img img6" id="img6"></div>
+      <div class="img" id="img1"></div>
+      <div class="img" id="img2"></div>
+      <div class="img" id="img3"></div>
+      <div class="img" id="img4"></div>
       <div class="socialmedia" id="socialmedia">
             <div id="facebook" class="icon">
               <a href="https://www.facebook.com/Bryan2718Cook" class="fa fa-facebook"></a>
@@ -216,32 +215,46 @@ function myFunction(x) {
     height:50vh;
     width:20vw;
   }
-  .img1{
+  #img1{
     background-image:url('https://scontent-lhr8-1.xx.fbcdn.net/v/t1.0-9/80615315_10163092951020727_2878721239101210624_n.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=bQlpsp_Vai8AX9LU8a1&_nc_ht=scontent-lhr8-1.xx&oh=553be5acfc31e0379215a9bd1d89eaa1&oe=5EC07D01');
     background-size:cover;
     position:absolute;
     margin-left:-5px;
+    /*
+    animation-name: animation1x;
+    animation-timing-function:linear;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    */
   }
-  .img2{
+  #img2{
     background-image:url('https://scontent-lht6-1.xx.fbcdn.net/v/t1.15752-0/p280x280/93827384_603102823623452_2599227440609886208_n.jpg?_nc_cat=105&_nc_sid=b96e70&_nc_ohc=U0y6wsRhQ-MAX-fPFS4&_nc_ht=scontent-lht6-1.xx&_nc_tp=6&oh=5fa51087602d402c1e1f30e026f9c2d2&oe=5EC1F3CF');
     background-size:cover;
     background-position: center;
     position:absolute;
     left:33.33%;
+/*
+    animation-name: animation2x;
+    animation-timing-function:linear;
+    animation-duration:1.25s;
+    animation-fill-mode:forwards;
+*/
   }
-  .img3{
+  #img3{
    background-image:url('https://scontent-lht6-1.xx.fbcdn.net/v/t1.15752-0/p280x280/91591007_654611242030121_3364819641888145408_n.png?_nc_cat=100&_nc_sid=b96e70&_nc_ohc=ISuKWf7lm9MAX9EMNF1&_nc_ht=scontent-lht6-1.xx&oh=dfc531c84f3009be36eb9b2a0eaa396b&oe=5EC10D3C');
     background-size:cover;
     position:absolute;
     background-position: center;
     right:0%;
     margin-right:0px;
+  /*
+    animation-name: animation3x;
+    animation-timing-function:linear;
+    animation-duration:1.5s;
+    animation-fill-mode:forwards;
+    clip:rect(2vh,1000px,40vh,0px);
+*/
   }
-
-    #img5,#img6{
-      display:none;
-    }
-
   #socialmedia{
     position:absolute;
     bottom:0%;
@@ -310,6 +323,31 @@ function myFunction(x) {
     justify-content: center !important;
     align-items: center !important;
   }
+  @keyframes animation1 {
+    from {
+      top: -100%;
+    }
+    to {
+      top: 0%;
+    }
+  }
+  @keyframes animation2 {
+    from {
+      top: -100%;
+    }
+    to {
+      top: 0%;
+    }
+  }
+
+  @keyframes animation3 {
+    from {
+      top: -100%;
+    }
+    to {
+      top: 0%;
+    }
+  }
   #footerContainer{
     color:white;
     opacity:0.5;
@@ -339,146 +377,97 @@ function myFunction(x) {
         MOBILE STYLE
 ++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++
+document.getElementById('img1').id="x1"
+document.getElementById('img2').id="x2"
+document.getElementById('x2').id="img1"
+
+
+(function(){
+console.log('start');
+  document.getElementById('img2').id="img1";
+    jQuery('#img1').css("background-image",'jQuery('#img2').css("background-image")');
+  document.getElementById('img3').id="img2";
+  document.getElementById('img1').id="img3";
+
+console.log('finished');
+})()
 
 */
 
   @media (max-width: 600px){
 
-    #img5,#img6{
-      display:inherit;
-    }
-
-    #bodyContainer{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:black;
-      position:relative;
-    }
     #bcxcontainer{
       display:flex;
       flex-direction:column;
       width:100vw;
-      height:100vh;
-      justify-content:center;
+      height:auto;
       background:black;
-      transition-timing-function:linear;
-      overflow-x:hidden;
-      opacity:0.5;
+      position:fixed;
+      border:10px black solid;
     }
-    .img{
-      opacity:1;
-      height:50vh;
-      width:60vw;
+
+    #img1,#img2,#img3{
+      width:100%;
     }
-    .img1{
+    #img1{
       background-image:url('https://scontent-lhr8-1.xx.fbcdn.net/v/t1.0-9/80615315_10163092951020727_2878721239101210624_n.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=bQlpsp_Vai8AX9LU8a1&_nc_ht=scontent-lhr8-1.xx&oh=553be5acfc31e0379215a9bd1d89eaa1&oe=5EC07D01');
       background-size:cover;
-      background-position: center;
       position:absolute;
       margin-left:-40vw;
-      transition:1s;
-      transition-timing-function:linear;
       width:60vw;
+      animation: move1 1s;
+      animation-timing-function:linear;
+      animation-fill-mode:forwards;
     }
-    .img2{
+    #img2{
       background-image:url('https://scontent-lht6-1.xx.fbcdn.net/v/t1.15752-0/p280x280/93827384_603102823623452_2599227440609886208_n.jpg?_nc_cat=105&_nc_sid=b96e70&_nc_ohc=U0y6wsRhQ-MAX-fPFS4&_nc_ht=scontent-lht6-1.xx&_nc_tp=6&oh=5fa51087602d402c1e1f30e026f9c2d2&oe=5EC1F3CF');
       background-size:cover;
       background-position: center;
       position:absolute;
-      margin-left:20vw;
-      transition:1s;
-      transition-timing-function:linear;
+      left:20%;
       width:60vw;
-      left:auto;
+      animation: move2 1s;
+      animation-timing-function:linear;
+      animation-fill-mode:forwards;
     }
-    .img3{
-     background-image:url('https://scontent-lht6-1.xx.fbcdn.net/v/t1.15752-0/p280x280/91591007_654611242030121_3364819641888145408_n.png?_nc_cat=100&_nc_sid=b96e70&_nc_ohc=ISuKWf7lm9MAX9EMNF1&_nc_ht=scontent-lht6-1.xx&oh=dfc531c84f3009be36eb9b2a0eaa396b&oe=5EC10D3C');
-      background-size:cover;
-      position:absolute;
-      background-position: center;
-      margin-left:80vw;
-      transition:1s;
-      transition-timing-function:linear;
-      width:60vw;
-      right:auto;
-
-    }
-    .img4{
-      background-image:url('https://scontent-lhr8-1.xx.fbcdn.net/v/t1.0-9/80615315_10163092951020727_2878721239101210624_n.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_ohc=bQlpsp_Vai8AX9LU8a1&_nc_ht=scontent-lhr8-1.xx&oh=553be5acfc31e0379215a9bd1d89eaa1&oe=5EC07D01');
-      background-size:cover;
-      background-position: center;
-      position:absolute;
-      margin-left:140vw;
-      transition:1s;
-      transition-timing-function:linear;
-      width:60vw;
-    }
-    .img5{
-      background-image:url('https://scontent-lht6-1.xx.fbcdn.net/v/t1.15752-0/p280x280/93827384_603102823623452_2599227440609886208_n.jpg?_nc_cat=105&_nc_sid=b96e70&_nc_ohc=U0y6wsRhQ-MAX-fPFS4&_nc_ht=scontent-lht6-1.xx&_nc_tp=6&oh=5fa51087602d402c1e1f30e026f9c2d2&oe=5EC1F3CF');
-      background-size:cover;
-      background-position: center;
-      position:absolute;
-      margin-left:200vw;
-      transition:1s;
-      transition-timing-function:linear;
-      width:60vw;
-    }
-    .img6{
+    #img3{
       background-image:url('https://scontent-lht6-1.xx.fbcdn.net/v/t1.15752-0/p280x280/91591007_654611242030121_3364819641888145408_n.png?_nc_cat=100&_nc_sid=b96e70&_nc_ohc=ISuKWf7lm9MAX9EMNF1&_nc_ht=scontent-lht6-1.xx&oh=dfc531c84f3009be36eb9b2a0eaa396b&oe=5EC10D3C');
       background-size:cover;
-      background-position: center;
       position:absolute;
-      margin-left:260vw;
-      transition:1s;
-      transition-timing-function:linear;
+      background-position: center;
       width:60vw;
-    }
-
-
-    html{
-    overflow-x:hidden;
-    overflow-y:hidden;
+      margin-right:-40vw;
+      animation: move3 1s;
+      animation-timing-function:linear;
+      animation-fill-mode:forwards;
     }
 
     #socialmedia{
-      position:fixed;
-      bottom:25%;
-      right:0%;
-      height:10vh;
+      background-color: transparent;
+      padding:10px;
       width:40vw;
-      margin-right:10px;
-      background:transparent;
-      display:flex;
-      justify-content:space-around;
-      align-items:center;
-      z-index:10;
     }
 
-    #facebook{border:1px white solid;}
     .fa-facebook,#facebook {
       background-color: black;
       color: white;
-      height:90%;
+      height:100%;
       text-decoration: none;
       border-radius:5px;
       }
 
-      #codepen{border:1px white solid;}
       .fa-codepen,#codepen {
         background: black;
         color: white;
-        height:90%;
+        height:100%;
         text-decoration: none;
         border-radius:5px;
         overflow-x: hidden;
       }
-      #linkedin{border:1px white solid;}
       .fa-google,#linkedin {
         background: black;
         color: white;
-        height:90%;
+        height:100%;
         text-decoration: none;
         border-radius:5px;
       }
@@ -486,63 +475,58 @@ function myFunction(x) {
        color: white;
        font-size:1.2em;
       }
-    .icon{
-      width:100%;
-      height:inherit;
-      display:flex;
-      justify-content:center;
-      font-size:2em;
-      overflow-y:hidden;
-      margin:2px;
-      opacity:0.5;
-    }
-    .fa:hover{
-     color: white;
-     font-size:1.2em;
-    }
-    .fa-codepen:hover{
-     color: black;
-     font-size:1.2em;
-    }
 
-    .icon a{
-      height:auto;
-    }
-    .fa{
-      display: flex;
-      justify-content: center !important;
-      align-items: center !important;
-    }
 
-          #bcxbarprogress{
-            position:fixed;
-            left:0%;
-            top:26%;
-            margin-left:-5px;
-            background:transparent;
-            height:5vw;
-            width:100%;
-            display:flex;
-            flex-direction:row;
-            align-items: center;
-            justify-content: center;
-            z-index:10;
-          }
-          .circle{
-          height:10px;
-          width:10px;
-          margin:10px;
-          border-radius: 50%;
-          border:1px white solid;
-          opacity: 1;
-          content:' ';
-            }
-        #circle2{
-          background:white;
+      #bcxbarprogress{
+        position:absolute;
+        left:0%;
+        margin-left:-5px;
+        background:transparent;
+        height:5vw;
+        width:100%;
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: center;
+      }
+      .circle{
+      height:10px;
+      width:10px;
+      margin:10px;
+      border-radius: 50%;
+      border:1px white solid;
+      opacity: 0.5;
+      content:' ';
         }
 
 
 
+  /*
+       @keyframes move1 {
+          from {
+            right: 0%;
+          }
+          to {
+            right: 100%;
+          }
+        }
+        @keyframes move2 {
+          from {
+            left: 100%;
+          }
+          to {
+            right: 0%;
+          }
+        }
+        @keyframes move3 {
+          from {
+            left: 200%;
+          }
+          to {
+            left: 100%;
+          }
+        }
+*/
 
   }
 
@@ -551,67 +535,17 @@ function myFunction(x) {
 </style>
 <script type="text/javascript">
 
+  if(jQuery(window).width() <= 600){
+  //console.log(new Date());
 
-click=0;
-arr=[6,1,2,3,4,5];
-cir=[2,3,1];
-
-
-      function back(){
-
-      arr.push(arr[0]);
-      arr.shift();
-      cir.push(cir[0]);
-      cir.shift();
-
-      document.getElementById('circle'+cir[0]).style.background="white";
-      document.getElementById('circle'+cir[1]).style.background="transparent";
-      document.getElementById('circle'+cir[2]).style.background="transparent";
-
-      document.getElementById('back').innerText=arr.join('-');
-
-      document.getElementById('img'+arr[0]).style.zIndex="4";
-      document.getElementById('img'+arr[1]).style.zIndex="4";
-      document.getElementById('img'+arr[2]).style.zIndex="4";
-      document.getElementById('img'+arr[3]).style.zIndex="4";
-      document.getElementById('img'+arr[4]).style.zIndex="4";
-      document.getElementById('img'+arr[5]).style.zIndex="1";
-
-      document.getElementById('img'+arr[0]).style.marginLeft="-100vw";
-      document.getElementById('img'+arr[1]).style.marginLeft="-40vw";
-      document.getElementById('img'+arr[2]).style.marginLeft="20vw";
-      document.getElementById('img'+arr[3]).style.marginLeft="80vw";
-      document.getElementById('img'+arr[4]).style.marginLeft="140vw";
-      document.getElementById('img'+arr[5]).style.marginLeft="200vw";
-
-    }
-
-
-
-function full(){
-document.getElementById('img1').style.marginLeft="auto";
-document.getElementById('img2').style.marginLeft="auto";
-document.getElementById('socialmedia').style.zIndex="10";
-}
 
 /*
-    need to address the smooth transition between screen sizes. currently only works after a refresh.
-    
+  document.getElementById('img2').style.animation="move1 1s";
+  document.getElementById('img3').style.animation="move2 1s";
+  document.getElementById('img1').style.animation="move3 1s";
 */
-//   setInterval(function(){document.getElementById('back').click()},3000)
-//  document.getElementsByTagName("BODY")[0].onresize = function() {myFunction()};
-//  function myFunction() {
-    //document.getElementById("h1").innerHTML = window.innerWidth;
-    if (window.innerWidth>=600){
-      document.getElementById('full').click();
-      console.log('outter');
-    }
-    else {
-      console.log('inner');
-      setInterval(function(){back()},3000);
-    }
 
-  //}
+};
 
 
 </script>
