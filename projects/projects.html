@@ -1,0 +1,398 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Projects</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+    var menu=0;
+function myFunction(x) {
+  menu++;
+  x.classList.toggle("change");
+  (menu%2==1?document.getElementById('menuContent').style.width="40%":
+   document.getElementById('menuContent').style.width="0%");
+}
+  </script>
+</head>
+<body style="border:collapse;margin:0px;padding:0px;">
+
+  <div id="menuContent" class="menuContent menuContentChange">
+    <div id="option1" class="option1"><a href="">About</a><p id="under1"><p></div>
+    <div id="option2" class="option2"><a href="./projects/projects.html">Projects</a><p id="under2"><p></div>
+    <div id="option3" class="option3"><a href="./games/games.html">Games</a><p id="under3"><p></div>
+  </div>
+
+    <div id="option0" class="option0" onclick="myFunction(this)">
+      <div class="menubar menubar1" id="menubar1"></div>
+      <div class="menubar menubar2" id="menubar2"></div>
+      <div class="menubar menubar3" id="menubar3"></div>
+    </div>
+
+
+
+<div id="bodyContainer">
+  <div id="bcxcontainer">
+
+    <div class="project1 project" id="prject1">
+      <table style="width:100%">
+        <tbody>
+          <tr >
+            <th style="text-align:center;color:white"><h2>Raspberry Pi Mirror</h2></th>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="projectleft">
+        <div class="projectimg" style="height:50vh;">
+        <iframe src="morningdisplayscaled.html" width="100%" height="100%"></iframe>
+        </div>
+
+      </div>
+      <div class="projectright" id="projectright" style="padding:15px;">
+
+          <!--convert into table -->
+          <table >
+            <tbody>
+              <tr>
+                <td>
+                  This display saved me from constantly revisiting these sites and the data is ready for
+                  me in the morning so I can plan my commute,lunch and dinner around this information.
+                  <br/>
+                  <br/>
+                  <ul>
+                    <li data-toggle="modal" data-target="#projectModal">Lunch (<span style="color:rgb(27, 149, 224)">@sadlerbuffet</span>)</li>
+                    <li>Tv Shows (Watchseries x Twilio)</li>
+                    <li>Weather (Open Weather)</li>
+                    <li>Jobs listing (Reed API)</li>
+                  </ul>
+                  <a href="morningdisplay.html" style="color:red;font-size:1em;">View full desktop version</a>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+
+  </div>
+ <div>
+
+
+
+
+   <div class="modal fade" id="projectModal" role="dialog">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+             <div class="modal-header" style="background:#e25b89;color:white;">
+               <p class="modal-title">The working</p>
+               <button type="button" class="close" data-dismiss="modal" style="color:#fff;opacity: 1;margin-top:-10px">&times;</button>
+             </div>
+             <div class="modal-body">
+
+                The restuarant below our office serves a hot buffet and for a while replaced daily tweets of their specials with an imaged weekly update.
+                (2 examples of their tweets are below)<br/><br/>
+                This ruined my previous process to grab their tweets and access which days the good stuff (Chicken) was served on. I
+                had to develop my process to solve this problem.<br/><br/>
+                <pre>
+                <code>
+                    <a href="https://raw.githubusercontent.com/bryancook94/Display/master/Week1%20Sample.jpg"  download>
+                      <img src="https://raw.githubusercontent.com/bryancook94/Display/master/Week1%20Sample.jpg" height="300" alt="">
+                    </a>
+                    <img src="https://raw.githubusercontent.com/bryancook94/Display/master/Week2%20Sample.jpg" height="300" alt="">
+                </code>
+                </pre>
+
+                Python script
+                <pre>
+                <code>
+from bs4 import BeautifulSoup
+import requests
+import boto3
+import json
+import mysql.connector
+
+mydb=mysql.connector.connect(
+host="XXX.XX.X.XX",
+user="Bryan",
+passwd="XXXXXXX",
+port="XXXXXXX"
+)
+
+          s3 = boto3.client('s3', aws_access_key_id='XXXXXXX'
+          ,aws_secret_access_key='XXXXXXX+p0cyp4kkXy')
+          s3.upload_file(fullname, bucket_name,filename)
+          ## ## ##
+          mycursor.close()
+          ## ## ##
+          #https://twitter.com/sadlerbuffet?lang=en
+          s3 = boto3.resource('s3', aws_access_key_id='XXXXXXX'
+         ,aws_secret_access_key='XXXXXXX')
+for bucket in s3.buckets.all():
+         print(bucket.name)
+
+image = s3.Object('my-project-bc-000','twitter1.jpg') # Get an Image from S3
+img_data = image.get()['Body'].read() # Read the image
+
+client=boto3.client('rekognition', region_name='us-east-1'
+      , aws_access_key_id='XXXXXXX'
+      ,aws_secret_access_key='XXXXXXX')
+
+response = client.detect_text(
+Image={
+'Bytes':img_data
+  }
+)
+
+print(json.dumps(len(response['TextDetections'])))
+
+for x in range(int(json.dumps(len(response['TextDetections'])))):
+textt=(json.dumps(response['TextDetections'][x]['DetectedText'],indent=2))
+width=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Width'],indent=2)
+height=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Height'],indent=2)
+leftt=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Left'],indent=2)
+top=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Top'],indent=2)
+print(top)
+
+mycursor=mydb.cursor()
+mycursor.execute("insert into Rp_bc_core.cd_sadler_buffet(text,width,height,leftt,top,loadtime) values('"+textt+"','"+width+"','"+height+"','"+leftt+"','"+top+"',curdate())")
+mydb.commit()
+
+mycursor=mydb.cursor()
+mycursor.execute("call Rp_bc_core.proc_cd_sadler_buffet();")
+mydb.commit()
+
+mycursor.execute("select distinct week from Rp_bc_reporting.rep_sadler_buffet;")
+result=mycursor.fetchall()
+mycursor.close()
+
+
+                </code>
+                </pre>
+
+                MySQL procedure defined
+                <pre>
+                <code>
+DROP PROCEDURE IF EXISTS Rp_bc_core.proc_cd_sadler_buffet;
+CREATE PROCEDURE Rp_bc_core.`proc_cd_sadler_buffet`()
+begin
+
+#insert into Rp_bc_core.bc_test(col1) values('3');
+Drop table if exists Rp_bc_core.cd_sadler_buffet_temp1;
+create table Rp_bc_core.cd_sadler_buffet_temp1
+select distinct text,leftt from Rp_bc_core.cd_sadler_buffet
+where text like '%chicken%' or text like '%lasagne%';
+
+#insert into Rp_bc_core.bc_test(col1) values('4');
+Drop table if exists Rp_bc_core.cd_sadler_buffet_temp2;
+create table Rp_bc_core.cd_sadler_buffet_temp2
+select distinct text,leftt from Rp_bc_core.cd_sadler_buffet
+where text in ('"monday"','"tuesday"','"wednesday"','"thursday"');
+
+#insert into Rp_bc_core.bc_test(col1) values('5');
+Drop table if exists Rp_bc_reporting.rep_sadler_buffet;
+create table Rp_bc_reporting.rep_sadler_buffet
+select a.text,a.leftt,b.week,curdate() from (
+select a.text,a.leftt,min(a.distance) mindistance from
+(
+select distinct a.text,a.leftt,b.text week,b.leftt weekpos,ABS(a.leftt-b.leftt) distance
+from Rp_bc_core.cd_sadler_buffet_temp1 a,Rp_bc_core.cd_sadler_buffet_temp2 b
+) a
+group by a.text,a.leftt
+) a
+inner join (select distinct a.text,a.leftt,b.text week,b.leftt weekpos,ABS(a.leftt-b.leftt) distance from Rp_bc_core.cd_sadler_buffet_temp1 a,Rp_bc_core.cd_sadler_buffet_temp2 b) b on a.mindistance=b.distance ;
+
+
+truncate Rp_bc_core.cd_sadler_buffet;
+#insert into Rp_bc_core.bc_test(col1) values('6');
+  end;
+                </code>
+                </pre>
+
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+       <!-- Modal content-->
+       </div>
+
+     </div>
+
+
+
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+  jQuery('#under1').width(0);
+  jQuery('#under2').width(0);
+  jQuery('#under3').width(0);
+
+
+  jQuery('#option1').mouseover(function() {
+      jQuery('#under1').width(jQuery('#option1').width());
+  });
+  jQuery('#option1').mouseleave(function() {
+    jQuery('#under1').width(0);
+  });
+  jQuery('#option2').mouseover(function() {
+      jQuery('#under2').width(jQuery('#option2').width());
+  });
+  jQuery('#option2').mouseleave(function() {
+    jQuery('#under2').width(0);
+  });
+  jQuery('#option3').mouseover(function() {
+      jQuery('#under3').width(jQuery('#option3').width());
+  });
+  jQuery('#option3').mouseleave(function() {
+    jQuery('#under3').width(0);
+  });
+
+</script>
+<style>
+  body,html{
+    background: black;
+  }
+  #menuContent{
+    float:left;
+    padding-top:5vh;
+    height:100vh;
+    background: rgba(0,0,0,0.8);
+    border-right:1px grey solid;
+    overflow-x: hidden;
+    z-index:1;
+    justify-content:center;
+    transition: 0.5s;
+    width:0%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    font-size: 1em;
+  }
+
+  .option0{
+    float:right;
+    margin:10px;
+    z-index:20;
+    opacity:0.5;
+
+  }
+  .menubar{
+    width:50px;
+    height:10px;
+    margin:2px;
+    background-color:white;
+    transition: 0.4s;
+
+  }
+
+  div[id^="option"]{
+    padding:0px 0px 20px 0px;
+  }
+  #option1{
+    xbackground:red;
+  }
+  a{
+    color:white;
+    text-decoration:none;
+    font-size:2em;
+  }
+  a:hover{
+    color:white;
+    opacity:0.5;
+    text-decoration:none;
+  }
+
+  .change .menubar1 {
+    -webkit-transform: rotate(-45deg) translate(-10px, 6px);
+    transform: rotate(-45deg) translate(-10px, 6px);
+    background:red;
+  }
+
+  .change .menubar2 {opacity: 0;}
+
+  .change .menubar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background:red;
+  }
+
+  p[id^="under"]{
+    height:2px;
+    transition:0.15s;
+    border-bottom:5px red solid;
+  }
+
+  #mainContent{
+    height:100vh;
+    width:inherit;
+    background:rgba(0,0,0,0.7);
+  }
+  #option0{
+    position:fixed;
+    top:0;
+    right:0;
+  }
+  #bodyContainer{
+    height:100vh;
+    display:flex;
+    margin-top:7vh;
+    justify-content:center;
+    background:black;
+    position:relative;
+  }
+  #bcxcontainer{
+    display:flex;
+    width:80vw;
+    height:inherit;
+//    position:fixed;
+background:white;
+    border:none;
+
+  }
+  iframe{
+    border:none;
+  }
+  .project{
+    border:none;
+    background:black;
+    display:flex;
+    flex-direction: column;
+  }
+  .projectleft{
+    fledx-basis:50em;
+  }
+  .projectright{
+    fdlex-basis:50em;
+  }
+  .projectright > table >tbody >tr >td{
+    padding:15px;
+  }
+  .projectright > table{
+  /*  fdlex-basis:50em;*/
+    padding:25px;
+    background:rgba(200,200,200,0.2);
+    color:white;
+  }
+  .projectimg{
+    border:10px black solid;
+    margin:15px 15px 15px 15px;
+  }
+  .projectimgtext{
+    margin:0px 15px 15px 15px;
+  }
+
+</style>
