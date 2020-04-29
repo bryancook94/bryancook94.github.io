@@ -1,0 +1,225 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Projects</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+    var menu=0;
+function myFunction(x) {
+  menu++;
+  x.classList.toggle("change");
+  (menu%2==1?document.getElementById('menuContent').style.width="40%":
+   document.getElementById('menuContent').style.width="0%");
+}
+  </script>
+</head>
+<body style="border:collapse;margin:0px;padding:0px;">
+
+  <div id="menuContent" class="menuContent menuContentChange">
+    <div id="option1" class="option1"><a href="">About</a><p id="under1"><p></div>
+    <div id="option2" class="option2"><a href="./projects/projects.html">Projects</a><p id="under2"><p></div>
+    <div id="option3" class="option3"><a href="./games/games.html">Games</a><p id="under3"><p></div>
+  </div>
+
+    <div id="option0" class="option0" onclick="myFunction(this)">
+      <div class="menubar menubar1" id="menubar1"></div>
+      <div class="menubar menubar2" id="menubar2"></div>
+      <div class="menubar menubar3" id="menubar3"></div>
+    </div>
+
+
+
+<div id="bodyContainer">
+  <div id="bcxcontainer">
+
+    <div class="gamecontainer" style="border:2px white solid">
+      <div class="game1">
+        <iframe src="4inarow.html" width="100%" height="100%" scrolling="no"></iframe>
+      </div>
+      <div class="gamedesc" style="text-align:center;border-top:3px black solid">
+          <h4>
+            <a href="./4inarow.html" style="color:red;font-size:1em">4inarow</a>
+            x
+            <a href="./darts.html" style="color:lime;font-size:1em">Darts scorer</a>
+          </h4>
+      </div>
+      <div class="game2">
+        <iframe src="darts.html" width="100%" height="100%" scrolling="no"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+  jQuery('#under1').width(0);
+  jQuery('#under2').width(0);
+  jQuery('#under3').width(0);
+
+
+  jQuery('#option1').mouseover(function() {
+      jQuery('#under1').width(jQuery('#option1').width());
+  });
+  jQuery('#option1').mouseleave(function() {
+    jQuery('#under1').width(0);
+  });
+  jQuery('#option2').mouseover(function() {
+      jQuery('#under2').width(jQuery('#option2').width());
+  });
+  jQuery('#option2').mouseleave(function() {
+    jQuery('#under2').width(0);
+  });
+  jQuery('#option3').mouseover(function() {
+      jQuery('#under3').width(jQuery('#option3').width());
+  });
+  jQuery('#option3').mouseleave(function() {
+    jQuery('#under3').width(0);
+  });
+
+</script>
+<style>
+  body,html{
+    background: black;
+  }
+  #menuContent{
+    float:left;
+    padding-top:5vh;
+    height:100vh;
+    background: rgba(0,0,0,0.8);
+    border-right:1px grey solid;
+    overflow-x: hidden;
+    z-index:1;
+    justify-content:center;
+    transition: 0.5s;
+    width:0%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    font-size: 1em;
+  }
+
+  .option0{
+    float:right;
+    margin:10px;
+    z-index:20;
+    opacity:0.5;
+
+  }
+  .menubar{
+    width:50px;
+    height:10px;
+    margin:2px;
+    background-color:white;
+    transition: 0.4s;
+
+  }
+
+  div[id^="option"]{
+    padding:0px 0px 20px 0px;
+  }
+  #option1{
+    xbackground:red;
+  }
+  a{
+    color:white;
+    text-decoration:none;
+    font-size:2em;
+  }
+  a:hover{
+    color:white;
+    opacity:0.5;
+    text-decoration:none;
+  }
+
+  .change .menubar1 {
+    -webkit-transform: rotate(-45deg) translate(-10px, 6px);
+    transform: rotate(-45deg) translate(-10px, 6px);
+    background:red;
+  }
+
+  .change .menubar2 {opacity: 0;}
+
+  .change .menubar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background:red;
+  }
+
+  p[id^="under"]{
+    height:2px;
+    transition:0.15s;
+    border-bottom:5px red solid;
+  }
+
+  #mainContent{
+    height:100vh;
+    width:inherit;
+    background:rgba(0,0,0,0.7);
+  }
+  #option0{
+    position:fixed;
+    top:0;
+    right:0;
+  }
+  #bodyContainer{
+    height:100vh;
+    display:flex;
+    margin-top:7vh;
+    justify-content:center;
+    background:black;
+    position:relative;
+  }
+  #bcxcontainer{
+    display:flex;
+    width:80vw;
+    height:90vh;
+//    position:fixed;
+background:white;
+    border:none;
+  }
+.gamecontainer{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  height:90vh;
+  }
+.game1{
+  display:flex;
+  flex-basis:50em;
+  border:none;
+}
+.game2{
+  display:flex;
+  flex-basis:50em;
+
+}
+iframe{
+  border:none;
+}
+
+  @media (max-width: 500px){
+
+
+  #bcxcontainer{
+    display:flex;
+    width:90vw;
+    height:inherit;
+    background:white;
+    border:none;
+        }
+
+  }
+</style>
