@@ -24,9 +24,9 @@ function myFunction(x) {
 <body style="border:collapse;margin:0px;padding:0px;">
 
   <div id="menuContent" class="menuContent menuContentChange">
-    <div id="option1" class="option1"><a href="http://bryancook94.github.io/">About</a><p id="under1"><p></div>
-    <div id="option2" class="option2"><a href="http://bryancook94.github.io/projects/projects.html">Projects</a><p id="under2"><p></div>
-    <div id="option3" class="option3"><a href="http://bryancook94.github.io/games/games.html">Games</a><p id="under3"><p></div>
+    <div id="option1" class="option1"><a href="">About</a><p id="under1"><p></div>
+    <div id="option2" class="option2"><a href="./projects/projects.html">Projects</a><p id="under2"><p></div>
+    <div id="option3" class="option3"><a href="./games/games.html">Games</a><p id="under3"><p></div>
   </div>
 
     <div id="option0" class="option0" onclick="myFunction(this)">
@@ -45,10 +45,14 @@ function myFunction(x) {
         <iframe src="4inarow.html" width="100%" height="100%" scrolling="no"></iframe>
       </div>
       <div class="gamedesc" style="text-align:center;border-top:3px black solid">
-          <h4>
+          <h4 >
+            <span style="background:rgba(0,0,0,0.8);border-radius:15px">
+            &nbsp;
             <a href="./4inarow.html" style="color:red;font-size:1em">4inarow</a>
             x
             <a href="./darts.html" style="color:lime;font-size:1em">Darts scorer</a>
+            &nbsp;
+            </span>
           </h4>
       </div>
       <div class="game2">
@@ -209,7 +213,14 @@ background:white;
 iframe{
   border:none;
 }
-
+.gamedesc{
+/*
+  background: rgb(89,142,244);
+  background: linear-gradient(67deg, rgba(89,142,244,1) 1%, rgba(44,201,78,1) 96%);
+*/
+  background:repeating-linear-gradient(45deg, black, black , yellow, yellow 5%);
+  color:white;
+}
   @media (max-width: 500px){
 
 
