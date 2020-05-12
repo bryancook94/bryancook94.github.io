@@ -247,14 +247,33 @@ const Circle=(props,state)=>{
 
 function winend(win=[10,17,24,31],color="red"){
   for (let x=0;x<42;x++){
-    if (win.indexOf(x)<0 || win.indexOf(x)>=0 && document.getElementById("c"+x).style.background!=color ){
+    if (win.indexOf(x)<0  ){
       document.getElementById("c"+x).style.opacity=0.2;
       document.getElementById("c"+x).style.pointerEvents = "none";
+    }
+  if (win.indexOf(x)>=0 ) {
+    console.log("second if ");
+      var nemo=`${color},${color},${color},${color}`;
+      var wincol=win.map(function(val,index){return document.getElementById('c'+val).style.background });
+      var winlen=win.length;
+      var str=wincol.join(',');
+      var start=str.substring(0,str.indexOf(nemo)).length-str.substring(0,str.indexOf(nemo)).replace(/,/g,'').length;
+      for (let z=0;z<winlen;z++){
+
+        if (z>=(start) && z<=(start+3) ){
+          console.log(z);
+        }
+        else {
+          document.getElementById("c"+win[z]).style.opacity=0.2;
+          document.getElementById("c"+win[z]).style.pointerEvents = "none";
+        }
+      }
 
     }
-  }
 
-}
+  }//end of for loop
+}//end of winend function
+
 
 function evaluate(color,arr){
 console.log(color);
