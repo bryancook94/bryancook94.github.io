@@ -254,26 +254,35 @@ function winend(win=[10,17,24,31],color="red"){
   if (win.indexOf(x)>=0 ) {
     console.log("second if ");
       var nemo=`${color},${color},${color},${color}`;
-      var wincol=win.map(function(val,index){return document.getElementById('c'+val).style.background });
+      var wincol=win.map(function(val,index){
+        if(val>41){
+          return "outofbounds";
+        }
+        else{
+          return document.getElementById('c'+val).style.background;
+        }
+      });
+
       var winlen=win.length;
       var str=wincol.join(',');
       var start=str.substring(0,str.indexOf(nemo)).length-str.substring(0,str.indexOf(nemo)).replace(/,/g,'').length;
-      for (let z=0;z<winlen;z++){
 
+      for (let z=0;z<winlen;z++){
         if (z>=(start) && z<=(start+3) ){
           console.log(z);
         }
-        else {
-          document.getElementById("c"+win[z]).style.opacity=0.2;
-          document.getElementById("c"+win[z]).style.pointerEvents = "none";
+       else {
+             if(win[z]<42){
+               document.getElementById("c"+win[z]).style.opacity=0.2;
+               document.getElementById("c"+win[z]).style.pointerEvents = "none";
+             }
         }
-      }
-
     }
 
+  } //if element found in array
   }//end of for loop
-}//end of winend function
 
+}//end of winend function
 
 function evaluate(color,arr){
 console.log(color);
