@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Handtrack.js : A library for prototyping realtime handtracking in the browser. </title>
+  <link rel="stylesheet" href="https://unpkg.com/carbon-components@latest/css/carbon-components.css" />
+  <link rel="stylesheet" href="track.css">
+  <link rel="stylesheet" href="mystyles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bx--body p20">
+<!-- <img id="img" src="hand.jpg"/>  -->
+<!--
+1) remove stop button
+2) have second button z-index behind first button and test loading styling .. must hover on for x seconds to work
+3) add tv shows images ... start button with be twilio linked
+-->
+
+
+  <div class="updatebar">
+    <div class="updatenote mt10">
+    <button onclick="toggleVideo()" id="trackbutton" class="bx" type="button">
+      Toggle Video
+    </button>
+    </div>
+
+    <div id="updatenote" class="updatenote mt10"> loading model ..</div>
+  </div>
+
+  <div class="dragndrop">
+      <div class="box1" id="block1">
+        <div class="box1left"><div class="bcxprogress">
+          <span class="series"><h2>&nbsp;The&nbsp;Flash</h2> <h3>&nbsp;S:1&nbsp;E:1</h3> </span>
+        </div></div>
+        <div class="box1right"></div>
+      </div>
+      <div class="box2">
+      <div class="sec1 btn"><span class="glyphicon glyphicon-phone"></span></div>
+      </div>
+      <div class="box3">3</div>
+
+      <div class="box1" id="block2">
+        <div class="box1left"><div class="bcxprogress">
+          <span class="series"><h2>&nbsp;Black&nbsp;Lghtn</h2> <h3>&nbsp;S:1&nbsp;E:1</h3> </span>
+        </div></div>
+        <div class="box1right"></div>
+      </div>
+      <div class="box2">
+        <div class="sec1 btn"><span class="glyphicon glyphicon-phone"></span></div>
+      </div>
+      <div class="box3">3</div>
+
+      <div class="box1" id="block3">
+        <div class="box1left"><div class="bcxprogress">
+          <span class="series"><h2>&nbsp;Gotham</h2> <h3>&nbsp;S:1&nbsp;E:1</h3> </span>
+        </div></div>
+        <div class="box1right"></div>
+      </div>
+      <div class="box2">
+        <div class="sec1 btn"><span class="glyphicon glyphicon-phone"></span></div>
+      </div>
+      <div class="box3">3</div>
+
+      <div class="box1" id="block4">
+        <div class="box1left"><div class="bcxprogress">
+          <span class="series"><h2>&nbsp;Brooklyn&nbsp;99</h2> <h3>&nbsp;S:1&nbsp;E:1</h3> </span>
+        </div></div>
+        <div class="box1right"></div>
+      </div>
+      <div class="box2">
+        <div class="sec1 btn"><span class="glyphicon glyphicon-phone"></span></div>
+      </div>
+      <div class="box3">3</div>
+
+      <div class="box1" id="block5">
+        <div class="box1left"><div class="bcxprogress">
+          <span class="series"><h2>&nbsp;Titans</h2> <h3>&nbsp;S:1&nbsp;E:1</h3> </span>
+        </div></div>
+        <div class="box1right"></div>
+      </div>
+      <div class="box2">
+        <div class="sec1 btn"><span class="glyphicon glyphicon-phone"></span></div>
+      </div>
+      <div class="box3">3a</div>
+
+
+
+
+</div>
+
+
+<div id="svgmappingcontainer">
+  <svg class="svgmapping" id="svgmapping">
+  <rect width="10" height="10" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" x="100" y="100" id="rect"></rect>
+  </svg>
+</div>
+
+
+  <video class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
+  <canvas id="canvas" class="border canvasbox"></canvas>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/carbon-components@latest/scripts/carbon-components.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+  <script src="track.js"></script>
+</body>
+
+</html>
+
+<!--
+
+var canvasWidth=parseInt(document.getElementById('canvas').getAttribute("width"));
+var canvasheight=parseInt(document.getElementById('canvas').getAttribute("height"));
+
+var Xrate=(window.innerWidth/canvasWidth)*canvasWidth;
+var Yrate=((window.innerHeight*0.75)/canvasheight)*canvasheight;
+
+-->
+
+
+<script>
+  const video = document.getElementById("myvideo");
+  const canvas = document.getElementById("canvas");
+  const context = canvas.getContext("2d");
+  let trackButton = document.getElementById("trackbutton");
+  let updateNote = document.getElementById("updatenote");
+
+  let isVideo = false;
+  let model = null;
+
+  const modelParams = {
+      flipHorizontal: true,   // flip e.g for video
+      maxNumBoxes: 20,        // maximum number of boxes to detect
+      iouThreshold: 0.5,      // ioU threshold for non-max suppression
+      scoreThreshold: 0.7,    // confidence threshold for predictions.
+  }
+
+  function startVideo() {
+      handTrack.startVideo(video).then(function (status) {
+          console.log("video started", status);
+          if (status) {
+              updateNote.innerText = "Video started. Now tracking"
+              isVideo = true
+              runDetection()
+          } else {
+              updateNote.innerText = "Please enable video"
+          }
+      });
+  }
+
+  function toggleVideo() {
+      if (!isVideo) {
+          updateNote.innerText = "Starting video"
+          startVideo();
+      } else {
+          updateNote.innerText = "Stopping video"
+          handTrack.stopVideo(video)
+          isVideo = false;
+          updateNote.innerText = "Video stopped"
+      }
+  }
+
+  var startDate = new Date();
+  var endDate   = new Date();
+
+
+  function runDetection() {
+      model.detect(video).then(predictions => {
+
+            if(predictions.length>0){
+              console.log("Predictions: ", predictions,"=>",predictions[0]["bbox"][0]);
+/*
+for(let k=0;k<5;k++){
+    if(x<=Xstep && y>=Ystep*k && y<=Ystep){
+        var width=parseInt(document.querySelector('#block'+(k+1)+' > div.box1left > div').style.width.replace("%",""))+1;
+        document.querySelector('#block'+(k+1)+' > div.box1left > div').style.width=width+"%";
+    }
+}
+x=84.71601486206055,y=177.77915954589844
+var startDate = new Date();
+var endDate   = new Date();
+var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+*/
+            var Xstep=(window.innerWidth*0.4);
+            var Ystep=(window.innerHeight*0.75*0.2);
+
+             var x=predictions[0]["bbox"][0];
+             var y=predictions[0]["bbox"][1];
+             document.getElementById('rect').setAttribute("x",predictions[0]["bbox"][0]);
+             document.getElementById('rect').setAttribute("y",predictions[0]["bbox"][1]);
+
+              for(let k=0;k<5;k++){
+                  if(x<=Xstep && y>=Ystep*k && y<=Ystep*(k+1)){
+                      console.log(k);
+                      var num=(jQuery('#block'+(k+1)+' > div.box1left > div').width())/(window.innerWidth*0.15);
+                      var width=Math.round(num*100)+2;
+                      document.querySelector('#block'+(k+1)+' > div.box1left > div').style.width=width+"%";
+                      startDate = new Date();
+
+                  }//end of if
+              }//end of for loop
+
+
+            }
+            else{
+              endDate   = new Date();
+              if ( ((endDate.getTime() - startDate.getTime()) / 1000) >10){
+                document.querySelector('#block'+1+' > div.box1left > div').style.width=0+"%"
+                document.querySelector('#block'+2+' > div.box1left > div').style.width=0+"%"
+                document.querySelector('#block'+3+' > div.box1left > div').style.width=0+"%"
+                document.querySelector('#block'+4+' > div.box1left > div').style.width=0+"%"
+                document.querySelector('#block'+5+' > div.box1left > div').style.width=0+"%"
+              }
+            }
+
+          model.renderPredictions(predictions, canvas, context, video);
+          if (isVideo) {
+              requestAnimationFrame(runDetection);
+          }
+      });
+  }
+
+  // Load the model.
+  handTrack.load(modelParams).then(lmodel => {
+      // detect objects in the image.
+      model = lmodel
+      updateNote.innerText = "Loaded Model!"
+      trackButton.disabled = false
+  });
+
+</script>
