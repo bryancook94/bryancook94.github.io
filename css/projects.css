@@ -1,0 +1,150 @@
+
+  body,html{
+    background: black;
+  }
+  #menuContent{
+    float:left;
+    padding-top:5vh;
+    height:100vh;
+    background: rgba(0,0,0,0.8);
+    border-right:1px grey solid;
+    overflow-x: hidden;
+    z-index:1;
+    justify-content:center;
+    transition: 0.5s;
+    width:0%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    font-size: 1em;
+  }
+
+  .option0{
+    float:right;
+    margin:10px;
+    z-index:20;
+    opacity:0.5;
+
+  }
+  .menubar{
+    width:50px;
+    height:10px;
+    margin:2px;
+    background-color:#10b68f;
+    transition: 0.4s;
+
+  }
+
+  div[id^="option"]{
+    padding:0px 0px 20px 0px;
+  }
+  #option1{
+    xbackground:red;
+  }
+  a{
+    color:white;
+    text-decoration:none;
+    font-size:2em;
+  }
+  a:hover{
+    color:white;
+    opacity:0.5;
+    text-decoration:none;
+  }
+
+  .change .menubar1 {
+    -webkit-transform: rotate(-45deg) translate(-10px, 6px);
+    transform: rotate(-45deg) translate(-10px, 6px);
+    background:red;
+  }
+
+  .change .menubar2 {opacity: 0;}
+
+  .change .menubar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background:red;
+  }
+
+  p[id^="under"]{
+    height:2px;
+    transition:0.15s;
+    border-bottom:5px #10b68f solid;
+  }
+
+  #mainContent{
+    height:100vh;
+    width:inherit;
+    background:rgba(0,0,0,0.7);
+  }
+  #option0{
+    position:fixed;
+    top:0;
+    right:0;
+  }
+  #bodyContainer{
+    height:100vh;
+    display:flex;
+    margin-top:7vh;
+    justify-content:center;
+    background:black;
+    position:relative;
+  }
+  #bcxcontainer{
+    display:flex;
+    width:80vw;
+    height:inherit;
+//    position:fixed;
+background:white;
+    border:none;
+
+  }
+  iframe{
+    border:none;
+  }
+  .project{
+    border:none;
+    background:black;
+    display:flex;
+    flex-direction: column;
+  }
+  .projectleft{
+    fledx-basis:50em;
+  }
+  .projectright{
+    fdlex-basis:50em;
+  }
+  .projectright > table >tbody >tr >td{
+    padding:15px;
+  }
+  .projectright > table{
+  /*  fdlex-basis:50em;*/
+    padding:25px;
+    background:rgba(200,200,200,0.2);
+    color:white;
+  }
+  .projectimg{
+    border:10px black solid;
+    margin:15px 15px 15px 15px;
+  }
+  .projectimgtext{
+    margin:0px 15px 15px 15px;
+  }
+
+
+
+  @media (max-width: 500px){
+
+
+  #bcxcontainer{
+    display:flex;
+    width:90vw;
+    height:inherit;
+    background:white;
+    border:none;
+        }
+
+  }
