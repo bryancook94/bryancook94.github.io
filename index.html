@@ -71,13 +71,20 @@ function myFunction(x) {
 
 <div id="footerContainer" class="footerContainer">
   <div id="name" class="footer" style="margin: -10px 0px;"><h1>Bryan Cook</h1></div>
-  <div id"box" class="footer" style="background:grey;width:60%;height:2px;margin: 5px 0px;">
+  <div id="box" class="footer" style="background:#10b68f;width:60%;height:2px;margin: 5px 0px;">
   &nbsp;</div>
   <div id="desc" class="footer"><p>Analyst&nbsp;&nbsp;.&nbsp;&nbsp;Googler&nbsp;&nbsp;.&nbsp;&nbsp;Cat Lover</p></div>
 </div>
 
   </body>
 </html>
+
+<script src="./Components/ParticleJS/particles.js"></script>
+<script type="text/javascript">
+particlesJS.load('bodyContainer', './Components/ParticleJS/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+</script>
 
 <script type="text/javascript">
   jQuery('#under1').width(0);
