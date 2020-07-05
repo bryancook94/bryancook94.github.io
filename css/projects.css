@@ -1,22 +1,4 @@
 
-#prject1 > div.projectHeader > div.projectVersion > h2::after{
-  content: ' ';
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 10px;
-  padding: 5px 5px 5px 5px;
-  border-top: 5px #10b68f solid;
-  border-right: 5px #10b68f solid;
-  transform: rotateZ(135deg);
-}
-.dropdown-content{
-  position: absolute;
-  display: none;
-}
-.projectVersion:hover .dropdown-content {
-  display: block;
-}
-
 
 
   body,html{
@@ -115,6 +97,7 @@
   }
   #bcxcontainer{
     display:flex;
+    justify-content: center;
     width:80vw;
     height:inherit;
 //    position:fixed;
