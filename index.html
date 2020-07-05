@@ -560,5 +560,35 @@ document.getElementById('socialmedia').style.zIndex="10";
     background-size: cover;
   }
 
+  .up {
+    animation-name: aniup;
+    animation-duration:0.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  .down {
+    animation-name: anidown;
+    animation-duration:0.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  @keyframes aniup {
+    0% {
+      bottom:0%;
+    }
+    100% {
+      top:0%;
+    }
+  }
+  @keyframes anidown {
+    0% {
+      top:0%;
+    }
+    100% {
+      bottom:0%;
+    }
+  }
 
 </style>
