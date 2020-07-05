@@ -45,14 +45,14 @@ function myFunction(x) {
           </div>
         </div>
       </div>
-      <div class="img img2" id="img2">
+      <div class="img img2" id="img2" onclick="start()">
         <div class="socialholder">
           <div id="codepen1" class="icon">
             <a href="#" class="fa fa-codepen"></a>
           </div>
         </div>
       </div>
-      <div class="img img3" id="img3">
+      <div class="img img3" id="img3" onclick="up()">
         <div class="socialholder">
           <div id="google1" class="icon">
             <a href="#" class="fa fa-google"></a>
@@ -464,6 +464,9 @@ document.getElementById('socialmedia').style.zIndex="10";
   padding: 5px;
   background: linear-gradient(262deg, rgba(0,0,0,0.5587185215883228) 12%, rgba(0,0,0,0.000126392353817) 49%);
   color: white;
+  position: absolute;
+  top: 0%;
+  right: 0%;
 }
 #scorer>div:nth-child(1){
   padding-bottom: 2px;
