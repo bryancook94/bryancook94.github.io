@@ -1,0 +1,182 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Iambryancook.info</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <script type="text/javascript">
+    var menu=0;
+function myFunction(x) {
+  menu++;
+  x.classList.toggle("change");
+  (menu%2==1?document.getElementById('menuContent').style.width="40%":
+   document.getElementById('menuContent').style.width="0%");
+
+}
+  </script>
+</head>
+<body style="border:collapse;margin:0px;padding:0px;">
+  <button onclick="back()" style="display:none" id="back">back</button>
+  <button onclick="full()" style="display:none" id="full">full</button>
+
+
+  <div id="menuContent" class="menuContent menuContentChange">
+    <div id="option1" class="option1"><a href="http://bryancook94.github.io/">About</a><p id="under1"><p></div>
+    <div id="option2" class="option2"><a href="http://bryancook94.github.io/projects/projects.html">Projects</a><p id="under2"><p></div>
+    <div id="option3" class="option3"><a href="http://bryancook94.github.io/games/games.html">Games</a><p id="under3"><p></div>
+  </div>
+
+  <div id="mainContent" class="mainContent">
+    <div id="option0" class="option0" onclick="myFunction(this)">
+      <div class="menubar menubar1" id="menubar1"></div>
+      <div class="menubar menubar2" id="menubar2"></div>
+      <div class="menubar menubar3" id="menubar3"></div>
+    </div>
+
+    <div id="bodyContainer">
+    <div id="bcxcontainer">
+      <div class="img img1" id="img1"></div>
+      <div class="img img2" id="img2"></div>
+      <div class="img img3" id="img3"></div>
+      <div class="img img4" id="img4"></div>
+      <div class="img img5" id="img5"></div>
+      <div class="img img6" id="img6"></div>
+      <div class="socialmedia" id="socialmedia">
+            <div id="facebook" class="icon">
+              <a href="https://www.facebook.com/Bryan2718Cook" class="fa fa-facebook"></a>
+            </div>
+            <div id="codepen" class="icon">
+              <a href="https://codepen.io/Bryan_Cook" class="fa fa-codepen"></a>
+            </div>
+            <div id="linkedin" class="icon">
+              <a href="mailto:www.cookbryan94@gmail.com" class="fa fa-google"></a>
+            </div>
+      </div>
+      <div class="bcxbar" id="bcxbar"></div>
+      <div class="bcxbarprogress" id="bcxbarprogress">
+          <div class="circle" id="circle1">&nbsp;</div>
+          <div class="circle" id="circle2">&nbsp;</div>
+          <div class="circle" id="circle3">&nbsp;</div>
+      </div>
+      </div>
+ <div>
+
+
+
+  </div>
+</div>
+
+
+<div id="footerContainer" class="footerContainer">
+  <div id="name" class="footer" style="margin: -10px 0px;"><h1>Bryan Cook</h1></div>
+  <div id="box" class="footer" style="background:#10b68f;width:60%;height:2px;margin: 5px 0px;">
+  &nbsp;</div>
+  <div id="desc" class="footer"><p>Analyst&nbsp;&nbsp;.&nbsp;&nbsp;Googler&nbsp;&nbsp;.&nbsp;&nbsp;Cat Lover</p></div>
+</div>
+
+  </body>
+</html>
+
+<script src="./Components/ParticleJS/particles.js"></script>
+<script type="text/javascript">
+particlesJS.load('bodyContainer', './Components/ParticleJS/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+</script>
+
+<script type="text/javascript">
+  jQuery('#under1').width(0);
+  jQuery('#under2').width(0);
+  jQuery('#under3').width(0);
+
+
+  jQuery('#option1').mouseover(function() {
+      jQuery('#under1').width(jQuery('#option1').width());
+  });
+  jQuery('#option1').mouseleave(function() {
+    jQuery('#under1').width(0);
+  });
+  jQuery('#option2').mouseover(function() {
+      jQuery('#under2').width(jQuery('#option2').width());
+  });
+  jQuery('#option2').mouseleave(function() {
+    jQuery('#under2').width(0);
+  });
+  jQuery('#option3').mouseover(function() {
+      jQuery('#under3').width(jQuery('#option3').width());
+  });
+  jQuery('#option3').mouseleave(function() {
+    jQuery('#under3').width(0);
+  });
+
+</script>
+
+<script type="text/javascript">
+
+
+click=0;
+arr=[6,1,2,3,4,5];
+cir=[2,3,1];
+
+
+      function back(){
+
+      arr.push(arr[0]);
+      arr.shift();
+      cir.push(cir[0]);
+      cir.shift();
+
+      document.getElementById('circle'+cir[0]).style.background="white";
+      document.getElementById('circle'+cir[1]).style.background="transparent";
+      document.getElementById('circle'+cir[2]).style.background="transparent";
+
+      document.getElementById('back').innerText=arr.join('-');
+
+      document.getElementById('img'+arr[0]).style.zIndex="4";
+      document.getElementById('img'+arr[1]).style.zIndex="4";
+      document.getElementById('img'+arr[2]).style.zIndex="4";
+      document.getElementById('img'+arr[3]).style.zIndex="4";
+      document.getElementById('img'+arr[4]).style.zIndex="4";
+      document.getElementById('img'+arr[5]).style.zIndex="1";
+
+      document.getElementById('img'+arr[0]).style.marginLeft="-100vw";
+      document.getElementById('img'+arr[1]).style.marginLeft="-40vw";
+      document.getElementById('img'+arr[2]).style.marginLeft="20vw";
+      document.getElementById('img'+arr[3]).style.marginLeft="80vw";
+      document.getElementById('img'+arr[4]).style.marginLeft="140vw";
+      document.getElementById('img'+arr[5]).style.marginLeft="200vw";
+
+    }
+
+
+
+function full(){
+document.getElementById('img1').style.marginLeft="auto";
+document.getElementById('img2').style.marginLeft="auto";
+document.getElementById('socialmedia').style.zIndex="10";
+}
+
+/*
+    need to address the smooth transition between screen sizes. currently only works after a refresh.
+
+*/
+//   setInterval(function(){document.getElementById('back').click()},3000)
+//  document.getElementsByTagName("BODY")[0].onresize = function() {myFunction()};
+//  function myFunction() {
+    //document.getElementById("h1").innerHTML = window.innerWidth;
+    if (window.innerWidth>=600){
+      document.getElementById('full').click();
+      console.log('outter');
+    }
+    else {
+      console.log('inner');
+      setInterval(function(){back()},3000);
+    }
+
+  //}
+
+
+</script>
