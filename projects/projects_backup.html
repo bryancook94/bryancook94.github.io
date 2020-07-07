@@ -42,13 +42,17 @@ function myFunction(x) {
   <div id="bcxcontainer">
 
     <div class="project1 project" id="prject1">
-      <table style="width:100%">
-        <tbody>
-          <tr >
-            <th style="text-align:center;color:white"><h2>Raspberry Pi Mirror</h2></th>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="projectHeader" style="display:flex;justify-content:center;">
+          <div class="projectName" style="color: white;"><h2>Raspberry PI Mirror &nbsp;|&nbsp;</h2></div>
+          <div class="projectVersion" style="position: relative;">
+              <h2 type="button" name="button" style="color: white;">Version 4</h2>
+              <div class="dropdown-content">
+                <a href="#" style="color:#10b68f">Version 4</a>
+                <a href="#" style="color:#10b68f">Version 5</a>
+              </div>
+          </div>
+      </div>
 
       <div class="projectleft">
         <div class="projectimg" style="height:80vh;">
@@ -260,3 +264,22 @@ truncate Rp_bc_core.cd_sadler_buffet;
   });
 
 </script>
+<style media="screen">
+#prject1 > div.projectHeader > div.projectVersion > h2::after{
+  content: ' ';
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 5px 5px 5px 5px;
+  border-top: 5px #10b68f solid;
+  border-right: 5px #10b68f solid;
+  transform: rotateZ(135deg);
+}
+.dropdown-content{
+  position: absolute;
+  display: none;
+}
+.projectVersion:hover .dropdown-content {
+  display: block;
+}
+</style>
