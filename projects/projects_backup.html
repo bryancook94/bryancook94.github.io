@@ -4,11 +4,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Projects</title>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+  <script src="../js/scroll.js"></script>
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/projects.css">
+  <link rel="stylesheet" href="../css/project_react.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript">
@@ -22,7 +29,7 @@ function myFunction(x) {
 }
   </script>
 </head>
-<body style="border:collapse;margin:0px;padding:0px;">
+<body style="border:collapse;margin:0px;padding:0px;" id="body">
 
   <div id="menuContent" class="menuContent menuContentChange">
     <div id="option1" class="option1"><a href="http://bryancook94.github.io/">About</a><p id="under1"><p></div>
@@ -38,200 +45,23 @@ function myFunction(x) {
 
 
 
-<div id="bodyContainer">
-  <div id="bcxcontainer">
-
-    <div class="project1 project" id="prject1">
-
-      <div class="projectHeader" style="display:flex;justify-content:center;">
-          <div class="projectName" style="color: white;"><h2>Raspberry PI Mirror &nbsp;|&nbsp;</h2></div>
-          <div class="projectVersion" style="position: relative;">
-              <h2 type="button" name="button" style="color: white;">Version 4</h2>
-              <div class="dropdown-content">
-                <a href="#" style="color:#10b68f">Version 4</a>
-                <a href="#" style="color:#10b68f">Version 5</a>
-              </div>
+    <div class="header" style="">
+      <div id="cirprogressleft">
+      <div><h1 style="margin-bottom: 0px;">Automated Blind</h1></div>
+        <div><h2 >Project History</h2></div>
+        <div>This page details the history/changes of the project</div>
+      </div>
+          <div id="cirprogress">
+            <svg>
+              <path id="arc1" fill="none" stroke="#10b68f" stroke-width="20" />
+            </svg>
           </div>
-      </div>
 
-      <div class="projectleft">
-        <div class="projectimg" style="height:80vh;">
-        <iframe src="morningdisplayscaled.html" width="100%" height="100%" scrolling="no"></iframe>
-        </div>
-
-      </div>
-      <div class="projectright" id="projectright" style="padding:15px;">
-
-          <!--convert into table -->
-          <table >
-            <tbody>
-              <tr>
-                <td>
-                  This display saved me from constantly revisiting these sites and the data is ready for
-                  me in the morning so I can plan my commute,lunch and dinner around this information.
-                  <br/>
-                  <br/>
-                  <ul>
-                    <li data-toggle="modal" data-target="#projectModal">Lunch (<span style="color:rgb(27, 149, 224)">@sadlerbuffet</span>)</li>
-                    <li>Tv Shows (Watchseries x Twilio)</li>
-                    <li>Weather (Open Weather)</li>
-                    <li>Jobs listing (Reed API)</li>
-                  </ul>
-                  <a href="morningdisplay.html" style="color:red;font-size:1em;">View full desktop version</a>
-              </td>
-              </tr>
-            </tbody>
-          </table>
-
-      </div>
     </div>
+    <!--  end of .header -->
 
-  </div>
- <div>
-
-
-
-
-   <div class="modal fade" id="projectModal" role="dialog">
-     <div class="modal-dialog">
-
-       <!-- Modal content-->
-       <div class="modal-content">
-             <div class="modal-header" style="background:#e25b89;color:white;">
-               <p class="modal-title">The working</p>
-               <button type="button" class="close" data-dismiss="modal" style="color:#fff;opacity: 1;margin-top:-10px">&times;</button>
-             </div>
-             <div class="modal-body">
-
-                The restuarant below our office serves a hot buffet and for a while replaced daily tweets of their specials with an imaged weekly update.
-                (2 examples of their tweets are below)<br/><br/>
-                This ruined my previous process to grab their tweets and access which days the good stuff (Chicken) was served on. I
-                had to develop my process to solve this problem.<br/><br/>
-                <pre>
-                <code>
-                    <a href="https://raw.githubusercontent.com/bryancook94/Display/master/Week1%20Sample.jpg"  download>
-                      <img src="https://raw.githubusercontent.com/bryancook94/Display/master/Week1%20Sample.jpg" height="300" alt="">
-                    </a>
-                    <img src="https://raw.githubusercontent.com/bryancook94/Display/master/Week2%20Sample.jpg" height="300" alt="">
-                </code>
-                </pre>
-
-                Python script
-                <pre>
-                <code>
-from bs4 import BeautifulSoup
-import requests
-import boto3
-import json
-import mysql.connector
-
-mydb=mysql.connector.connect(
-host="XXX.XX.X.XX",
-user="Bryan",
-passwd="XXXXXXX",
-port="XXXXXXX"
-)
-
-          s3 = boto3.client('s3', aws_access_key_id='XXXXXXX'
-          ,aws_secret_access_key='XXXXXXX+p0cyp4kkXy')
-          s3.upload_file(fullname, bucket_name,filename)
-          ## ## ##
-          mycursor.close()
-          ## ## ##
-          #https://twitter.com/sadlerbuffet?lang=en
-          s3 = boto3.resource('s3', aws_access_key_id='XXXXXXX'
-         ,aws_secret_access_key='XXXXXXX')
-for bucket in s3.buckets.all():
-         print(bucket.name)
-
-image = s3.Object('my-project-bc-000','twitter1.jpg') # Get an Image from S3
-img_data = image.get()['Body'].read() # Read the image
-
-client=boto3.client('rekognition', region_name='us-east-1'
-      , aws_access_key_id='XXXXXXX'
-      ,aws_secret_access_key='XXXXXXX')
-
-response = client.detect_text(
-Image={
-'Bytes':img_data
-  }
-)
-
-print(json.dumps(len(response['TextDetections'])))
-
-for x in range(int(json.dumps(len(response['TextDetections'])))):
-textt=(json.dumps(response['TextDetections'][x]['DetectedText'],indent=2))
-width=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Width'],indent=2)
-height=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Height'],indent=2)
-leftt=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Left'],indent=2)
-top=json.dumps(response['TextDetections'][x]['Geometry']['BoundingBox']['Top'],indent=2)
-print(top)
-
-mycursor=mydb.cursor()
-mycursor.execute("insert into Rp_bc_core.cd_sadler_buffet(text,width,height,leftt,top,loadtime) values('"+textt+"','"+width+"','"+height+"','"+leftt+"','"+top+"',curdate())")
-mydb.commit()
-
-mycursor=mydb.cursor()
-mycursor.execute("call Rp_bc_core.proc_cd_sadler_buffet();")
-mydb.commit()
-
-mycursor.execute("select distinct week from Rp_bc_reporting.rep_sadler_buffet;")
-result=mycursor.fetchall()
-mycursor.close()
-
-
-                </code>
-                </pre>
-
-                MySQL procedure defined
-                <pre>
-                <code>
-DROP PROCEDURE IF EXISTS Rp_bc_core.proc_cd_sadler_buffet;
-CREATE PROCEDURE Rp_bc_core.`proc_cd_sadler_buffet`()
-begin
-
-#insert into Rp_bc_core.bc_test(col1) values('3');
-Drop table if exists Rp_bc_core.cd_sadler_buffet_temp1;
-create table Rp_bc_core.cd_sadler_buffet_temp1
-select distinct text,leftt from Rp_bc_core.cd_sadler_buffet
-where text like '%chicken%' or text like '%lasagne%';
-
-#insert into Rp_bc_core.bc_test(col1) values('4');
-Drop table if exists Rp_bc_core.cd_sadler_buffet_temp2;
-create table Rp_bc_core.cd_sadler_buffet_temp2
-select distinct text,leftt from Rp_bc_core.cd_sadler_buffet
-where text in ('"monday"','"tuesday"','"wednesday"','"thursday"');
-
-#insert into Rp_bc_core.bc_test(col1) values('5');
-Drop table if exists Rp_bc_reporting.rep_sadler_buffet;
-create table Rp_bc_reporting.rep_sadler_buffet
-select a.text,a.leftt,b.week,curdate() from (
-select a.text,a.leftt,min(a.distance) mindistance from
-(
-select distinct a.text,a.leftt,b.text week,b.leftt weekpos,ABS(a.leftt-b.leftt) distance
-from Rp_bc_core.cd_sadler_buffet_temp1 a,Rp_bc_core.cd_sadler_buffet_temp2 b
-) a
-group by a.text,a.leftt
-) a
-inner join (select distinct a.text,a.leftt,b.text week,b.leftt weekpos,ABS(a.leftt-b.leftt) distance from Rp_bc_core.cd_sadler_buffet_temp1 a,Rp_bc_core.cd_sadler_buffet_temp2 b) b on a.mindistance=b.distance ;
-
-
-truncate Rp_bc_core.cd_sadler_buffet;
-#insert into Rp_bc_core.bc_test(col1) values('6');
-  end;
-                </code>
-                </pre>
-
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-       <!-- Modal content-->
-       </div>
-
-     </div>
-
-
+    <div class="timeline" style="margin-top: 200px;" id="react-node">
+    </div>
 
 
 
@@ -283,3 +113,81 @@ truncate Rp_bc_core.cd_sadler_buffet;
   display: block;
 }
 </style>
+
+
+
+<script type="text/babel">
+class App extends React.Component{
+  constructor(props){
+  super(props);
+  this.state={
+    project:"Blind",
+    version:"1.0.",
+    status:"inprogress",
+    position:["right","left","right","left","right","left","right","left","right"],
+    title:["UI Component for blind","PHP processing","First Demo","3D Printed Redesigns","Assembly & Reasoning","3D Printed Components","Soldering & Library install","Adafruit DC & Stepper Motor HAT","Initialisation"],
+    mediaType:["image","image","video","image","image","image","video","image","none"],
+    media:["http://iambryancook.info/images/blind4.jpg","data:image/jpeg;base64,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","http://iambryancook.info/videos/VID_blind2.3gp","http://iambryancook.info/images/blind3.jpg","http://iambryancook.info/images/blind1.jpg","http://iambryancook.info/images/blind2.jpg","http://iambryancook.info/videos/VID_blind1.3gp","https://cdn.shopify.com/s/files/1/0176/3274/products/2348-00_a96f0556-b444-4f79-a8c4-7ff48d1fd5b5_500x.jpg?v=1575435386","#"],
+    text:[" For the updated UI (version 5) for my smart mirror project I've created different notification streams and I've grouped the controls for the blind under the raspi notifcations which also displays weather information for that day.","PHP script used on the pi to call the python file and supply it with 1 numerical argument. Where a negative number represents the request to lower the bind.","Initial demo of the components mounted and testing opening/closing functionality. I noticed another design flaw where above 70% open the cogs are too small and the blind is rubbing against the rod cog. This was redesigned with larger teeth.","After initial fitting we realised that motor was out of alignment and the arm was to narrow. These were redesigned and reprinted. The cogs were super glued and pressed together.","Lower wall mount printed. I've opted for a copper drive rod instead of a belt drive or a weighted system to reduce the work done by the motor to operate the blind. I also enjoyed the idea of a copper component.","These were the first components printed. Upper wall mount, cog and blind connector.","The video shows the components all connected and after installing the adafruit controller library the result is a functioning motor run via a sample python script","Components and tools used in this project include:","The goal of this project is to automate the opening/closing of the blind in sync with my morning alarm. Also, who wouldn't want to reduce manual labour?"]
+  }
+};
+
+componentDidMount(){
+  document.getElementById("arc1").setAttribute("d", describeArc(150, 150, 100, 0, 0));
+  //is this the right way?
+  setTimeout(function(){
+      window.scrollTo(0,0);
+      let original=Math.max(document.body.offsetHeight - (window.pageYOffset + window.innerHeight), 0);
+
+      console.log(`myFunction(${original})`);
+      document.getElementById("body").setAttribute("onscroll",`myFunction(${original})`)
+      console.log("done",original);
+
+    }, 3000);
+
+}
+
+render(){
+  const {position,title,text,media,mediaType}=this.state;
+  return (
+      <div>
+      {
+        position.map((val,index)=>(
+          <div className={"container "+ position[index]} style={{margin:'0px'}}>
+          <div class="content">
+            <h2>{title[index]}</h2>
+              {(mediaType[index]=="image"?
+                  <img src={media[index]} alt="image" width="100%"/>:mediaType[index]=="video"?
+                        <video width="100%" height="240" controls>
+                          <source src={media[index]} type="video/mp4"/>
+                        </video>:
+                        console.log('No media for ',index)
+            )}
+            {(index==7?
+              <span>
+                <p style={{margin:'10px 0px'}}>{text[index]}</p>
+                  <ul>
+                    <li>Adafruit DC & Stepper Motor HAT</li>
+                    <li>Motor</li>
+                    <li>Battery Box</li>
+                    <li>Wires</li>
+                    <li>Soldering Iron & Dremel</li>
+                  </ul>
+                <p style={{margin:'10px 0px'}}>The pins for the hat needed to be soldered in and the wires stripped & connected to the battery box and board.</p>
+              </span>
+              :<p style={{margin:'10px 0px'}}>{text[index]}</p>)}
+
+          </div>
+          </div>
+        ))
+      }
+      </div>
+
+
+  )
+}
+
+}
+
+ReactDOM.render(<App/>,document.getElementById('react-node'))
+</script>
