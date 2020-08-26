@@ -1,0 +1,95 @@
+
+
+
+  :global(body),:global(html){
+    background: black;
+  }
+  :global(#menuContent){
+    float:left;
+    padding-top:5vh;
+    height:100vh;
+    background: rgba(0,0,0,0.8);
+    border-right:1px grey solid;
+    overflow-x: hidden;
+    z-index:12;
+    justify-content:center;
+    transition: 0.5s;
+    width:0%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    font-size: 1em;
+  }
+
+  :global(.option0){
+    float:right;
+    margin:10px;
+    z-index:20;
+    opacity:0.5;
+
+  }
+  :global(.menubar){
+    width:50px;
+    height:10px;
+    margin:2px;
+    background-color:#10b68f;
+    transition: 0.4s;
+
+  }
+
+  :global(div[id^="option"]){
+    padding:0px 0px 20px 0px;
+  }
+  :global(a){
+    color:white;
+    text-decoration:none;
+    font-size:2em;
+  }
+  :global(a:hover){
+    color:white;
+    text-decoration:none;
+  }
+
+  :global(.change .menubar1) {
+    -webkit-transform: rotate(-45deg) translate(-10px, 6px);
+    transform: rotate(-45deg) translate(-10px, 6px);
+    background:red;
+  }
+
+  :global(.change .menubar2) {opacity: 0;}
+
+  :global(.change .menubar3) {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background:red;
+  }
+
+  :global(p[id^="under"]){
+    height:2px;
+    transition:0.5s;
+    border-bottom:5px black solid;
+    width:0%;
+  }
+  :global(.underChange){
+    width:50% !important;
+  }
+
+:global(div[id^="option"]:hover > p[id^="under"]){
+    width:100%;
+    transition:0.5s;
+    border-bottom:5px #10b68f solid;
+}
+
+  :global(#mainContent){
+    height:100vh;
+    width:inherit;
+    background:rgba(0,0,0,0.7);
+  }
+  :global(#option0){
+    position:fixed;
+    top:0;
+    right:0;
+  }

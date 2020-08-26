@@ -1,0 +1,47 @@
+:global(.button){
+    padding:5px 20px;
+    width:max-content;
+    border:1px #10b68f solid;
+    background:black;
+    color:#e5eae9
+}
+
+:global(.ribbon_r){
+position:absolute;
+height:100px;
+width:100px;
+overflow:hidden;
+top:-3px;
+right:-3px
+}
+
+:global(.ribbon_l){
+position:absolute;
+height:100px;
+width:100px;
+overflow:hidden;
+top:-3px;
+left:-3px
+}
+:global(.ribbon_text_r){
+  text-align: center;
+  color:white;
+  text-shadow:1px 1px black;
+  background-image: -webkit-linear-gradient(top; #BFDC7A; #8EBF45);
+  position: relative;
+  padding: 5px 26px;
+  top: 11px;
+  transform: rotate(45deg);
+  right: -28px
+}
+:global(.ribbon_text_l){
+  text-align: center;
+  color:white;
+  text-shadow:1px 1px black;
+  background-image: -webkit-linear-gradient(top; #BFDC7A; #8EBF45);
+  position: relative;
+  padding: 5px 26px;
+  top: 11px;
+  transform: rotate(-45deg);
+  left: -28px
+}
