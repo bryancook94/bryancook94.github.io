@@ -7,7 +7,7 @@ constructor(props){
   super(props);
   this.state={
       raspi1:{"text":"09:00 AM Mon - 19℃ light rain","img":"","show":"auto"},
-      raspi2:{"text":"12:00 PMxxx Mon - 17℃ overcast clouds","img":"","show":"auto"},
+      raspi2:{"text":"12:00 PM Mon - 17℃ overcast clouds","img":"","show":"auto"},
       raspi3:{"text":"03:00 PM Mon - 19℃ light rain","img":"","show":"auto"},
       raspi4:{"text":"06:00 PM Mon - 18℃ light rain","img":"","show":"auto"},
       raspi5:{"text":"09:00 PM Mon - 14℃ overcast clouds","img":"","show":"auto"},
@@ -18,16 +18,14 @@ constructor(props){
 hide(x){
   let number='raspi'+(x.index+1);
   console.log("a",x,'==>',number);
+
+
   this.setState((state)=>(
     {
           [number]:{"show":"none"},
 
     }
   ))
-  document.getElementById(number).remove();
-
-  //console.log("state =>",this.state);
-
 
 
 }
@@ -50,12 +48,9 @@ hide(x){
             console.log("data1 ==> ",this.state[val].show);
             return (
               <div id={val} className="raspi" style={hidden} key={`raspi${index}`}>
-                <p>{this.state[val].show}</p>
+                {this.state[val].show}
                 <div className="raspi-weather" style={weather} key={`raspi-weather${index}`}></div>
-                <div className="crossL" onClick={()=>{this.hide({index})}}>
-                  <div className="crossL-up"></div>
-                  <div className="crossL-down"></div>
-                </div>
+                <div className="crossL" onClick={()=>{this.hide({index})}}>x</div>
               </div>
             )
           }
@@ -64,11 +59,8 @@ hide(x){
             return (
               <div id={val} className="raspi" key={`raspi${index}`}>
                 <div className="raspi-weather" style={weather} key={`raspi-weather${index}`}></div>
-                <p>{this.state[val].text} - {this.state[val].show}</p>
-                <div className="crossL"  onClick={()=>{this.hide({index})}}>
-                  <div className="crossL-up"></div>
-                  <div className="crossL-down"></div>
-                </div>
+                {this.state[val].text} - {this.state[val].show}
+                <div className="crossL"  onClick={()=>{this.hide({index})}}>x</div>
               </div>
             )
           }
