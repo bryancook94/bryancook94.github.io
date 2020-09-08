@@ -56,5 +56,10 @@ module.exports = {
             filename: 'index.html',
             inject: 'body'
         })
-    ]
+    ],
+    performance: {
+       hints: false,
+       maxEntrypointSize: 512000,
+       maxAssetSize: 512000
+   }
 };
