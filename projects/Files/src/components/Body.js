@@ -122,7 +122,11 @@ var component=state["projects"][this.state.projectsActive]["features"]["componen
           console.log('No extra images')
         )}
 
-            <h2>{title[index]} </h2>
+              {
+                //adding a link to react-redux component page
+                (projectsActive==1?<h2>{title[index]}</h2>:<h2><a href="./ReactReduxV5Component" style={{'font-size':'1em'}}>{title[index]}</a></h2>)
+              }
+
             <div style={{'position':'relative'}}>
               {(
                 mediaType[index]=="image"?
