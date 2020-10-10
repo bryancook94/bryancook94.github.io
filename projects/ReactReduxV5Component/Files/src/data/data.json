@@ -1,0 +1,31 @@
+{
+"notification":{
+      "twitter":{
+        "twitter1":{"text":"Codespaces is a new integration with GitHub and VSCode that makes development fun & easy. Want to play around with… https://t.co/T9DPYbaGR9","handle":"@freeCodeCamp","time":"Mon Sep 7 15:01","display":"block"},
+        "twitter2":{"text":"The AWS SysOps Associate is the most popular entry-level certification into a DevOps cloud role. And @andrewbrown… https://t.co/uSy2dJUeSQ","handle":"@freeCodeCamp","time":"Mon Sep 7 18:02","display":"block"},
+        "twitter3":{"text":"Hack the Box is an online platform that lets you practice your penetration testing skills. In this write up… https://t.co/ky6jHIYxws","handle":"@freeCodeCamp","time":"Tue Sep 8 15:01","display":"block"},
+        "twitter4":{"text":"SVG is an awesome way to bring vector images into your design and development workflow. But collecting and organi… https://t.co/wmAIb4GMqC","handle":"@freeCodeCamp","time":"Tue Sep 8 16:01","display":"block"},
+        "twitter5":{"text":"The unit circle is a useful visualization tool for learning about trigonometric functions. It makes things simpler… https://t.co/v3xlYtmWH4","handle":"@freeCodeCamp","time":"Tue Sep 8 17:02","display":"block"}
+                },
+      "whatsapp":{
+        "whatsapp1":{"text":"Not ready yet","handle":"@-","time":"Mon Sep 7 15:01","display":"block"}
+                },
+      "reed":{
+        "reed1":{"text":"Junior/Graduate Engineer Technical Sales/Estimator | Pontyclun","handle":"-","time":"Mon Sep 7 15:01","display":"block"},
+        "reed2":{"text":"Associate Director Cardiff Established Planning Consultancy | Cardiff","handle":"-","time":"Mon Sep 7 15:02","display":"block"},
+        "reed3":{"text":"Deputy Sister/Charge Nurse | Headington","handle":"-","time":"Mon Sep 7 15:03","display":"block"}
+                },
+      "twilio":{
+        "twilio1":{"text":"Site Offline","handle":"-","time":"Mon Sep 7 15:01","display":"block"}
+                },
+      "raspi":{
+        "raspi1":{"text":"something1","handle":"-","time":"Mon Sep 7 15:01","display":"block"},
+        "raspi2":{"text":"something2","handle":"-","time":"Mon Sep 7 15:02","display":"block"},
+        "raspi3":{"text":"something3","handle":"-","time":"Mon Sep 7 15:03","display":"block"},
+        "raspi4":{"text":"something4","handle":"-","time":"Mon Sep 7 15:04","display":"block"},
+        "raspi5":{"text":"something5","handle":"-","time":"Mon Sep 7 15:05","display":"block"}
+              }
+      }
+
+
+}
