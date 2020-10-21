@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stacker Microsite Generator</title>
+    <link rel="stylesheet" href="./css/zift.css">
+
+    <script src="./extra/Landing.js"></script>
+    <script src="./extra/AssetForm.js"></script>
+    <script src="./extra/AssetConfirmation.js"></script>
+    <script src="./extra/ContactConfirmation.js"></script>
+
+    <script src="./html/FullWidthBanner.js"></script>
+    <script src="./html/FullWidthContent.js"></script>
+    <script src="./html/Header.js"></script>
+    <script src="./html/HeaderTwoLogos.js"></script>
+    <script src="./html/Group.js"></script>
+    <script src="./html/ImageLeft.js"></script>
+    <script src="./html/ImageRight.js"></script>
+    <script src="./html/Contact.js"></script>
+    <script src="./html/Footer.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="./json/shell.js"></script>
+    <script src="./json/ImageLeftJSON.js"></script>
+    <script src="./json/ImageRightJSON.js"></script>
+    <script src="./json/FullWidthContentJSON.js"></script>
+    <script src="./json/FullWidthBannerJSON.js"></script>
+
+    <script src="./json/GroupJSON.js"></script>
+
+  </head>
+  <body style="
+    background:rgb(59,167,215);
+    background-image: url(https://ziftsolutions.com/wp-content/uploads/2019/03/home-header.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;">
+<div id="cbackground"></div>
+
+    <div id="render">
+        <div class="boundary left" id="left">
+          <div class="header">
+            <span id="folderopen" onclick="start()" class="glyphicon glyphicon-folder-open"></span>
+          </div>
+          <div class="body leftdown" id="ReadySections">
+          <div id="ReadySectionsInner" style="overflow: scroll;">
+
+                <section id="Header"  draggable="true" ondragstart="drag(event)">
+                  <div class="Header-inner" id="Header-inner"></div>
+                </section>
+                <section id="HeaderTwoLogos"  draggable="true" ondragstart="drag(event)">
+                  <div class="Header-left" id="Header-left"></div>
+                  <div class="Header-right" id="Header-right"></div>
+                </section>
+                <section id="FullWidthBanner" draggable="true" ondragstart="drag(event)">
+                  <div class="FullWidthBanner">
+                    <div>
+                    </div>
+                  </div>
+                </section>
+                <section id="FullWidthContent" draggable="true" ondragstart="drag(event)">
+                  <div class="FullWidthContent">
+                    <div>
+                    </div>
+                  </div>
+                  <div>
+                    Full Width Content
+                  </div>
+                </section>
+                <section id="ImageLeft" draggable="true" ondragstart="drag(event)">
+                  <div class="ImageLeft ImageLeft-left">
+                  </div>
+                  <div class="ImageLeft ImageLeft-right">
+                      Image Left Text
+                  </div>
+                </section>
+                <section id="ImageRight" draggable="true" ondragstart="drag(event)">
+                  <div class="ImageRight ImageRight-right">
+                    Image Right Text
+                  </div>
+                  <div class="ImageRight ImageRight-left">
+                  </div>
+                </section>
+                <section id="Group" draggable="true" ondragstart="drag(event)">
+                  <div class="Groupwords">
+                    <div class="Groupwords-1">
+                      <div class="Gimage">
+                      </div>
+                      <div class="groupp">
+                        <p>Item 1 Heading</p>
+                          <div class="btn formbutton">Button</div>
+                      </div>
+                    </div>
+
+                    <div class="Groupwords-2">
+                      <div class="Gimage">
+                      </div>
+                      <div class="groupp">
+                          <p>Item 2 Heading</p>
+                          <div class="btn formbutton">Button</div>
+                      </div>
+                    </div>
+
+                    <div class="Groupwords-3">
+                      <div class="Gimage">
+                      </div>
+                      <div class="groupp">
+                        <p>Item 3 Heading</p>
+                          <div class="btn formbutton">Button</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </section>
+
+                <section id="Contact" draggable="true" ondragstart="drag(event)">
+                  <div class="Contactwords">
+                    <div class="Contactwords-heading">
+                      Heading Text
+                    </div>
+                    <form>
+                      <input type="text" name="" placeholder="First Name *"></input>
+                      <input type="text" name="" placeholder="Last Name *"></input>
+                      <input type="text" name="" placeholder="Email Address *"></input>
+                      <input type="text" name="" placeholder="Phone Number"></input>
+                      <textarea type="text" name="" placeholder="Message"></textarea>
+                    </form>
+                    <div class="btn btn formbutton">
+                      Button
+                    </div>
+                  </div>
+                </section>
+
+                <section id="Footer" draggable="true" ondragstart="drag(event)">
+                  <div class="Footerwords">
+                    <div class="Footerwords-up">
+                        <p>Zift Solutions | bryancook@ziftsolutions</p>
+                        <p>074 555 2 6666 | www.ziftsolutions.com</p>
+                        <p>Copyright @ 2019. All rights reserved./p>
+                    </div>
+                    <div class="Footerwords-down">
+                      <a href="#" class="fa fa-facebook"></a>
+                      <a href="#" class="fa fa-twitter"></a>
+                      <a href="#" class="fa fa-google"></a>
+                      <a href="#" class="fa fa-linkedin"></a>
+
+                    </div>
+
+                  </div>
+                </section>
+
+
+          </div>
+
+          </div>
+        </div>
+
+        <div class="boundary center" id="center">
+          <div class="header" id="centerup">
+            <span class="glyphicon glyphicon-save" onclick="exportthis()"></span>
+          </div>
+          <div class="body centerdown" id="centerdown">
+              <div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event,this.id)">
+
+              </div>
+          </div>
+        </div>
+
+        <div class="boundary right" id="right" >
+          <div class="header">
+            <span class="glyphicon glyphicon-cog" onclick="cogstart()"></span>
+          </div>
+          <div class="body rightdown">
+              <div id="settings" style="overflow: scroll;">
+                <table>
+                  <thead>
+                    <tr >
+                      <th style="border-right:1px solid white;border-bottom:1px solid white;">Name</th>
+                      <th style="border-bottom:1px solid white;">Value</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody">
+                </tbody>
+
+
+                </table>
+              </div>
+          </div>
+        </div>
+
+    </div>
+
+
+
+  </body>
+</html>
+<script>
+
+function allowDrop(ev,x) {
+ev.preventDefault();
+
+}
+
+
+
+function drag(ev) {
+ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev,target) {
+  //console.log("here!",ev,"==>",ev.target.id);
+ev.preventDefault();
+var data = ev.dataTransfer.getData("text");
+  //console.log("dddd",data);
+  if(ev.target.getAttribute("id")!==null){
+    //ev.target.appendChild();
+    ev.target.insertAdjacentHTML("beforeend",document.getElementById(data).outerHTML);
+    //ev.target.insertAdjacentHTML("beforeend",insertchunk(data));
+
+    document.querySelectorAll('#dropzone > section[id^="'+data+'"]').forEach((item,i)=>{
+      item.setAttribute("data",i);
+      item.setAttribute("onclick","createtable(this.id,this.getAttribute('data'))");
+    });
+
+
+  }
+
+  Array.from(document.querySelectorAll('div[class^="column"]')).forEach(column => {
+    event.currentTarget.classList.remove('drop');
+  });
+
+
+
+}
+
+
+const dragEnter = event => {
+  event.currentTarget.classList.add('drop');
+};
+
+const dragLeave = event => {
+  event.currentTarget.classList.remove('drop');
+};
+
+Array.from(document.querySelectorAll('div[class^="column"]')).forEach(column => {
+  column.addEventListener('dragenter', dragEnter);
+  column.addEventListener('dragleave', dragLeave);
+});
+
+
+/*custom shit to be removed in time*/
+
+var Sections=[];
+function SectionsData(){
+  document.querySelectorAll('#dropzone > section').forEach((item, i) => {
+    var input="";
+    (parseInt(item.getAttribute("data"))==0?input=item.id:input=item.id+" "+item.getAttribute("data"));
+    Sections.push(input);
+  });
+}
+
+
+function VORD(item){ if(item.values.length>0){ return item.values} else{ return item.defaults} };
+
+function createtable(x,y){
+ //console.log(x,"==>",y);
+(y==0?y="":y=y);
+ switch(x){
+   case "ImageLeft":
+       if (GlobalJSON[`ImageLeft${y}`]==undefined){GlobalJSON[`ImageLeft${y}`]=ImageLeftJSON(y).fields;}
+       document.getElementById("tbody").innerHTML="";
+       GlobalJSON[`ImageLeft${y}`].forEach((a,b)=>{
+
+
+       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+         <tr>
+           <td>${a.name}</td>
+           <td><input onkeypress="dataupdate('ImageLeft${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageLeft${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+         </tr>
+       `)
+       } )
+     break;
+   case "ImageRight":
+       if (GlobalJSON[`ImageRight${y}`]==undefined){GlobalJSON[`ImageRight${y}`]=ImageRightJSON(y).fields;}
+       document.getElementById("tbody").innerHTML="";
+       GlobalJSON[`ImageRight${y}`].forEach((a,b)=>{
+       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+         <tr>
+           <td>${a.name}</td>
+           <td><input onkeypress="dataupdate('ImageRight${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageRight${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+         </tr>
+       `)
+       } )
+     break;
+   case "FullWidthContent":
+      if (GlobalJSON[`FullWidthContent${y}`]==undefined){GlobalJSON[`FullWidthContent${y}`]=FullWidthContentJSON(y).fields;}
+       document.getElementById("tbody").innerHTML="";
+       GlobalJSON[`FullWidthContent${y}`].forEach((a,b)=>{
+       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+         <tr>
+           <td>${a.name}</td>
+           <td><input onkeypress="dataupdate('FullWidthContent${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthContent${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+         </tr>
+       `)
+       } )
+     break;
+   case "FullWidthBanner":
+      if (GlobalJSON[`FullWidthBanner${y}`]==undefined){GlobalJSON[`FullWidthBanner${y}`]=FullWidthBannerJSON(y).fields;}
+       document.getElementById("tbody").innerHTML="";
+       GlobalJSON[`FullWidthBanner${y}`].forEach((a,b)=>{
+       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+         <tr>
+           <td>${a.name}</td>
+           <td><input onkeypress="dataupdate('FullWidthBanner${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthBanner${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+         </tr>
+       `)
+       } )
+     break;
+   case "Group":
+        if (GlobalJSON[`Group${y}`]==undefined){GlobalJSON[`Group${y}`]=GroupJSON(y).fields;}
+        document.getElementById("tbody").innerHTML="";
+        GlobalJSON[`Group${y}`].forEach((a,b)=>{
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td><input onkeypress="dataupdate('Group${y}','${a.name}',this.value,this.id)" id="key-${b}" data="Group${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+          </tr>
+        `)
+      } );
+        break;
+    case "Header":
+         if (GlobalJSON[`shell`]==undefined){GlobalJSON[`shell`]=getdata().fields;}
+         document.getElementById("tbody").innerHTML="";
+         GlobalJSON[`shell`].forEach((a,b)=>{
+         document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+           <tr>
+             <td>${a.name}</td>
+             <td><input onkeypress="dataupdate('shell','${a.name}',this.value,this.id)" id="key-${b}" data="shell" value='`+VORD(a)+`' placeholder=". . ."/></td>
+           </tr>
+         `)
+         } );
+     break;
+   case "HeaderTwoLogos":
+        if (GlobalJSON[`shell`]==undefined){GlobalJSON[`shell`]=getdata().fields;}
+        document.getElementById("tbody").innerHTML="";
+        GlobalJSON[`shell`].forEach((a,b)=>{
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td><input onkeypress="dataupdate('shell','${a.name}',this.value,this.id)" id="key-${b}" data="shell" value='`+VORD(a)+`' placeholder=". . ."/></td>
+          </tr>
+        `)
+        } );
+    break;
+  case "Contact":
+       if (GlobalJSON[`shell`]==undefined){GlobalJSON[`shell`]=getdata().fields;}
+       document.getElementById("tbody").innerHTML="";
+       GlobalJSON[`shell`].forEach((a,b)=>{
+       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+         <tr>
+           <td>${a.name}</td>
+           <td><input onkeypress="dataupdate('shell','${a.name}',this.value,this.id)" id="key-${b}" data="shell" value='`+VORD(a)+`' placeholder=". . ."/></td>
+         </tr>
+       `)
+       } );
+   break;
+ case "Footer":
+      if (GlobalJSON[`shell`]==undefined){GlobalJSON[`shell`]=getdata().fields;}
+      document.getElementById("tbody").innerHTML="";
+      GlobalJSON[`shell`].forEach((a,b)=>{
+      document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+        <tr>
+          <td>${a.name}</td>
+          <td><input onkeypress="dataupdate('shell','${a.name}',this.value,this.id)" id="key-${b}" data="shell" value='`+VORD(a)+`' placeholder=". . ."/></td>
+        </tr>
+      `)
+      } );
+  break;
+
+   default:
+     //console.log("default case reached");
+     break;
+ }
+
+}
+
+var GlobalJSON={
+  "shell":getdata().fields,
+}
+
+//https://wilcity.com/wp-content/uploads/2018/12/sample-logo-design-png-3.png
+//https://www.bumbleance.com/wp-content/uploads/2013/06/banner-sample.jpg
+
+
+function dataupdate(func,key,val,id){
+  if(func.match(/[0-9]/g)==null){var funcText=func+"JSON";} else {var funcText=func.replace(new RegExp("[0-9]", "g"), "JSON");}
+  var funcNum=func.replace(new RegExp("[a-zA-Z]", "g"), "");
+
+  GlobalJSONSelector=func;
+  if(GlobalJSON[func]!==undefined){func=GlobalJSON[func]}else {func=eval(funcText+"("+funcNum+").fields")}
+
+        var all=[...func];
+        var idindex=parseInt(id.replace("key-",""));
+        //save over defaults because there is a shit process somewhere ATM
+        all[idindex].defaults=val;
+        GlobalJSON[GlobalJSONSelector]=all;
+
+}
+
+function start(){
+  document.getElementById('center').classList.toggle("centerstart");
+  document.getElementById('dropzone').classList.toggle("whiteborder");
+
+  document.getElementById('left').classList.toggle("leftstart");
+  document.getElementById('ReadySectionsInner').classList.toggle("whiteborder");
+
+}
+function cogstart(){
+  document.getElementById('right').classList.toggle("rightstart");
+  document.getElementById('settings').classList.toggle("whiteborder");
+
+}
+
+function insertchunk(functioncall,assetid){
+  var order =functioncall.replace(new RegExp("[0-9]", "g"), "").trim();
+  var num = parseInt(functioncall.replace(new RegExp("[a-zA-Z]", "g"), "").trim());
+  console.log("===>",order,num)
+  switch(order){
+    case "FullWidthBanner": return FullWidthBanner(num,assetid);break;
+    case "FullWidthContent": return FullWidthContent(num,assetid);break;
+    case "Header": return Header();break;
+    case "HeaderTwoLogos": return HeaderTwoLogos();break;
+    case "Group": console.log("Group");return Group(num,assetid);break;
+    case "ImageLeft": return ImageLeft(num,assetid);break;
+    case "ImageRight": return ImageRight(num,assetid);break;
+    case "Contact": return Contact();break;
+    case "Footer": console.log("Footer");return Footer();break;
+    default:return console.log("default case reached",order,num);break;
+      }
+}
+
+function exportthis(){
+  if(document.querySelectorAll('#dropzone > section').length==0){
+    alert("Try creating something first!")
+  }
+  else {
+    let htmlstring="";
+    SectionsData();
+    var finalArray=Sections.map((a,b)=>{return a.replace(/([A-Z])/g, ' $1').trim() });
+    GlobalJSON.shell[59].values=finalArray.join(",");
+    GlobalJSON.shell[59].defaults=finalArray.join(",");
+    Sections.forEach((item, i) => { htmlstring+=insertchunk(item,i) });
+
+    download("Landing.html",Landing(htmlstring));
+    download("AssetForm.html",AssetForm(finalArray));
+    download("AssetConfirmation.html",AssetConfirmation(finalArray));
+    download("ContactConfirmation.html",ContactConfirmation());
+
+      var GlobalExport=[];
+      Object.entries(GlobalJSON).forEach((a,b)=>{
+          a[1].forEach((item, i) => {
+            GlobalExport.push(item);
+          });
+       });
+      var GlobalExportFinal={
+        "fields":GlobalExport
+      };
+      download("fields.json",JSON.stringify(GlobalExportFinal) );
+
+  }
+
+}
+
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+
+
+
+</script>

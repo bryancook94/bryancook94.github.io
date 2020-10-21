@@ -1,0 +1,256 @@
+
+:root{
+  --border:1px solid rgba(0,0,0,0.8);
+  --borderwhite:1px solid white;
+  --background:white;
+}
+body{
+  height:100vh;
+  width:100%;
+  BACKGROUND:BLACK;
+  COLOR:WHITE;
+  overflow:hidden;
+  position:relative;
+}
+#render{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+grid-template-rows:95vh;
+position: relative;
+z-index: 3;
+}
+
+#tools{
+  grid-area:2/1/3/4;
+}
+
+.center,.right,.left{
+  display:flex;
+  flex-direction:column;
+  height:0%;
+  transition: 2s;
+}
+.centerstart,.rightstart,.leftstart{
+  height:106%;
+  transition: 2s;
+}
+#tbody::-webkit-scrollbar,#settings::-webkit-scrollbar,#ReadySectionsInner::-webkit-scrollbar {
+  display: none;
+}
+#centerup{
+  /*flex:2em;*/
+  /*border:var(--border);*/
+}
+.centerdown,.rightdown,.leftdown{
+  flex:9em;
+  /*border:var(--border);*/
+  background:rgba(0,0,0,0.8);
+}
+
+
+.boundary{
+  /*border:var(--border);*/
+}
+.header{
+  text-align:center;
+  padding:30px 0px;
+  font-size: 30px;
+  font-weight: 600;
+  /*border:var(--border);*/
+  background: rgba(0,0,0,0.8);
+  /*margin-bottom: 20px;*/
+  color:white;
+}
+
+.body{
+  position:relative;
+  /*height: 80vh;*/
+}
+.body >div{
+  /* padding: 0px 20px; */
+margin: 20px 20px;
+position: absolute;
+top: 0%;
+bottom: 0%;
+left: 0%;
+right: 0%;
+background: rgb(232 230 234 / 18%);
+overflow: hidden;
+}
+.whiteborder{
+  border: var(--borderwhite);
+}
+/*components*/
+/*components*/
+/*components*/
+section{
+  margin:5px;
+  background:var(--background);
+}
+
+#Header{
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid black;
+}
+#Header-inner{
+  border: 1px solid black;
+  margin: 10px;
+  background-image: url(../placeholder.png);
+  width: 25%;
+  background-size: cover;
+  background-position: center;
+}
+#HeaderTwoLogos{
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+#Header-left,#Header-right{
+  border: 1px solid black;
+  margin: 10px;
+  background-image: url(../placeholder.png);
+  width: 25%;
+  background-size: cover;
+  background-position: center;
+}
+
+#FullWidthBanner{
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+.FullWidthBanner{
+  height: auto;
+  width: 100%;
+  padding: 20px;
+}
+
+.FullWidthBanner>div{
+  border: 1px solid black;
+  height: 100%;
+  background-image: url(../placeholder.png);
+  background-position: center;
+}
+.FullWidthContent>div{
+  border: 1px solid black;
+  height: 100px;
+  background-image: url(../placeholder.png);
+  background-position: center;
+}
+#FullWidthContent > div:nth-child(2){
+  text-align: center;
+padding: 15px;
+}
+.sectionwords{
+  height: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#ImageLeft,#ImageRight{
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+.ImageLeft,.ImageRight{
+flex:2em;
+}
+.ImageLeft-left,.ImageRight-left{
+  height: 100%;
+  background-image: url(../placeholder.png);
+  background-position: center;
+}
+p{
+  padding:0px;
+  margin:0px;
+}
+.ImageLeft-right,.ImageRight-right{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:black;
+}
+.ImageLeft-right  p:nth-child(1,.ImageRight-right  p:nth-child(1)){
+  margin-top: 5px;
+ font-size: 1.1em;
+}
+.ImageLeft-right  p:nth-child(2),.ImageRight-right  p:nth-child(2){
+  font-size: 0.9em;
+    padding: 3px;
+}
+.ImageLeft-right > p:nth-child(3),.ImageRight-right  p:nth-child(3){
+  font-size: 0.9em;
+    background: #17a2b8;
+    color: white;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.b{
+    border: 1px solid black;
+}
+
+
+
+/*custom background*/
+/*custom background*/
+/*custom background*/
+/*custom background*/
+/*custom background*/
+/*custom background*/
+/*custom background*/
+
+#background{
+  height:100%;
+  width:100%;
+      margin: 1% 1%;
+  /*background:#6edca9;*/
+  display:grid;
+  grid-template-rows:repeat(auto-fill, minmax(100px, 100px));
+  grid-template-columns:repeat(auto-fill, minmax(100px, 100px));
+  border:1px solid black;
+  position:relative;
+}
+
+#background{
+position: absolute;
+top: 0%;
+bottom: 0%;
+left: 0%;
+right: 0%;
+}
+.aborder{
+    border:1px solid black;
+    padding:10px;
+}
+table{
+  height:100%;
+  width:100%;
+  font-size: 1em;
+  color: white;
+}
+th{
+  font-size: 1em;
+    color: white;
+}
+td{
+/*border:1px solid white;*/
+}
+
+td,th{
+  padding: 20px !important;
+}
+input{
+  background:transparent;
+  border:none;
+}
+::placeholder {
+  color: white;
+}
