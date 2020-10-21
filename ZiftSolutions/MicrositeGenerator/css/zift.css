@@ -34,7 +34,7 @@ z-index: 3;
   height:106%;
   transition: 2s;
 }
-#tbody::-webkit-scrollbar,#settings::-webkit-scrollbar,#ReadySectionsInner::-webkit-scrollbar {
+#tbody::-webkit-scrollbar,#settings::-webkit-scrollbar,#ReadySectionsInner::-webkit-scrollbar,#dropzone::-webkit-scrollbar {
   display: none;
 }
 #centerup{
