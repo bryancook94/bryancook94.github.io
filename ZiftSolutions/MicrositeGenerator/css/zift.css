@@ -340,3 +340,33 @@ color:black;
 .Footerwords-up  p {
   margin:0px;
 }
+
+
+
+a:focus,a:hover {
+   color: #000 !important;
+   text-decoration: underline;
+}
+
+section{
+  position:relative;
+}
+.accident{
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #c12e64;
+  border-radius: 20px;
+  top: -6%;
+  right: 0%;
+  justify-content: center;
+  color: white;
+}
+
+#ReadySectionsInner section .accident,#dropzone section .accident{
+  display: none;
+}
+
+#dropzone section:hover .accident{
+  display: flex;
+}

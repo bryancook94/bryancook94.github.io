@@ -70,16 +70,21 @@
 
                 <section id="Header"  draggable="true" ondragstart="drag(event)">
                   <div class="Header-inner" id="Header-inner"></div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+
+
                 <section id="HeaderTwoLogos"  draggable="true" ondragstart="drag(event)">
                   <div class="Header-left" id="Header-left"></div>
                   <div class="Header-right" id="Header-right"></div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
                 <section id="FullWidthBanner" draggable="true" ondragstart="drag(event)">
                   <div class="FullWidthBanner">
                     <div>
                     </div>
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
                 <section id="FullWidthContent" draggable="true" ondragstart="drag(event)">
                   <div class="FullWidthContent">
@@ -89,6 +94,7 @@
                   <div>
                     Full Width Content
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
                 <section id="ImageLeft" draggable="true" ondragstart="drag(event)">
                   <div class="ImageLeft ImageLeft-left">
@@ -96,6 +102,7 @@
                   <div class="ImageLeft ImageLeft-right">
                       Image Left Text
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
                 <section id="ImageRight" draggable="true" ondragstart="drag(event)">
                   <div class="ImageRight ImageRight-right">
@@ -103,6 +110,7 @@
                   </div>
                   <div class="ImageRight ImageRight-left">
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
                 <section id="Group" draggable="true" ondragstart="drag(event)">
                   <div class="Groupwords">
@@ -134,6 +142,7 @@
                     </div>
 
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
 
                 <section id="Contact" draggable="true" ondragstart="drag(event)">
@@ -152,6 +161,7 @@
                       Button
                     </div>
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
 
                 <section id="Footer" draggable="true" ondragstart="drag(event)">
@@ -170,6 +180,8 @@
                     </div>
 
                   </div>
+                  <div class="accident" onclick="accident(this)">x</div>
+
                 </section>
 
 
@@ -219,9 +231,13 @@
 </html>
 <script>
 
+function accident(node){
+      node.parentNode.remove();
+      }
+
+
 function allowDrop(ev,x) {
 ev.preventDefault();
-
 }
 
 
@@ -234,8 +250,8 @@ function drop(ev,target) {
   //console.log("here!",ev,"==>",ev.target.id);
 ev.preventDefault();
 var data = ev.dataTransfer.getData("text");
-  //console.log("dddd",data);
-  if(ev.target.getAttribute("id")!==null){
+  //console.log("dddd",data,ev.target.id);
+  if(ev.target.getAttribute("id")!==null && ev.target.id=="dropzone"){
     //ev.target.appendChild();
     ev.target.insertAdjacentHTML("beforeend",document.getElementById(data).outerHTML);
     //ev.target.insertAdjacentHTML("beforeend",insertchunk(data));
@@ -286,6 +302,16 @@ function SectionsData(){
 function VORD(item){ if(item.values.length>0){ return item.values} else{ return item.defaults} };
 
 function createtable(x,y){
+
+// if it isn't open already. open the fields table
+// seems to be calling when you remove a node. commented it out for now
+/*
+if(document.getElementById('right').classList.contains("rightstart")==false){
+  document.getElementById('right').classList.add("rightstart");
+  document.getElementById('settings').classList.add("whiteborder");
+}
+*/
+
  //console.log(x,"==>",y);
 (y==0?y="":y=y);
  switch(x){
