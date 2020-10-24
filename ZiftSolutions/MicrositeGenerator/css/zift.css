@@ -60,6 +60,7 @@ z-index: 3;
   background: rgba(0,0,0,0.5);
   /*margin-bottom: 20px;*/
   color:white;
+  position:relative;
 }
 
 .body{
@@ -266,6 +267,7 @@ height: 100px;
 width: 100%;
 background-image: url(../placeholder.png);
 background-position: center;
+border:1px solid black;
 }
 div[class^="Groupwords-"]{
   width: 33%;
@@ -370,3 +372,10 @@ section{
 #dropzone section:hover .accident{
   display: flex;
 }
+#chart,#chartb,#chartc{
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  z-index: -1;
+}
+svg{fill:#c12e64}

@@ -50,6 +50,14 @@
 
     <script src="./json/GroupJSON.js"></script>
 
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>
+    <style type='text/css'>
+      .click-circle{
+        cursor: pointer;
+      }
+    </style>
+
   </head>
   <body style="
     background:rgb(59,167,215);
@@ -63,10 +71,14 @@
     <div id="render">
         <div class="boundary left" id="left">
           <div class="header">
-            <span id="folderopen" onclick="start()" class="glyphicon glyphicon-folder-open"></span>
+            <div>
+              <span id="folderopen" onclick="start()" class="glyphicon glyphicon-folder-open"></span>
+            </div>
+            <div id="chart">
+            </div>
           </div>
           <div class="body leftdown" id="ReadySections">
-          <div id="ReadySectionsInner" style="overflow: scroll;">
+          <div id="ReadySectionsInner" style="overflow: scroll;" onscroll="myFunction(this)">
 
                 <section id="Header"  draggable="true" ondragstart="drag(event)">
                   <div class="Header-inner" id="Header-inner"></div>
@@ -192,10 +204,14 @@
 
         <div class="boundary center" id="center">
           <div class="header" id="centerup">
-            <span class="glyphicon glyphicon-save" onclick="exportthis()"></span>
+            <div>
+              <span class="glyphicon glyphicon-save" onclick="exportthis()"></span>
+            </div>
+            <div id="chartb">
+            </div>
           </div>
           <div class="body centerdown" id="centerdown">
-              <div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event,this.id)" style="overflow: scroll;">
+              <div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event,this.id)" style="overflow: scroll;" onscroll="myFunctionb(this)">
 
               </div>
           </div>
@@ -203,10 +219,14 @@
 
         <div class="boundary right" id="right" >
           <div class="header">
-            <span class="glyphicon glyphicon-cog" onclick="cogstart()"></span>
+            <div>
+              <span class="glyphicon glyphicon-cog" onclick="cogstart()"></span>
+            </div>
+            <div id="chartc">
+            </div>
           </div>
           <div class="body rightdown">
-              <div id="settings" style="overflow: scroll;">
+              <div id="settings" style="overflow: scroll;" onscroll="myFunctionc(this)">
                 <table>
                   <thead>
                     <tr >
@@ -303,6 +323,7 @@ function VORD(item){ if(item.values.length>0){ return item.values} else{ return 
 
 function createtable(x,y){
 
+document.getElementById('chartc').innerHTML='';
 // if it isn't open already. open the fields table
 // seems to be calling when you remove a node. commented it out for now
 /*
@@ -457,16 +478,22 @@ function dataupdate(func,key,val,id){
 }
 
 function start(){
+
   document.getElementById('center').classList.toggle("centerstart");
   document.getElementById('dropzone').classList.toggle("whiteborder");
 
   document.getElementById('left').classList.toggle("leftstart");
   document.getElementById('ReadySectionsInner').classList.toggle("whiteborder");
 
+  document.getElementById('ReadySectionsInner').scrollTop=0;
+  document.getElementById('dropzone').scrollTop=0;
 }
+
 function cogstart(){
   document.getElementById('right').classList.toggle("rightstart");
   document.getElementById('settings').classList.toggle("whiteborder");
+
+  document.getElementById('settings').scrollTop=0;
 
 }
 
@@ -535,3 +562,4 @@ function download(filename, text) {
 
 
 </script>
+<script type="text/javascript" src="./main.js"></script>
