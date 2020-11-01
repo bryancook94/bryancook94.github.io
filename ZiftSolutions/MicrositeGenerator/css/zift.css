@@ -3,6 +3,7 @@
   --border:1px solid rgba(0,0,0,0.8);
   --borderwhite:1px solid white;
   --background:white;
+  --pink:#c12e64;
 }
 body{
   height:100vh;
@@ -96,9 +97,8 @@ section{
   border: 1px solid black;
 }
 #Header-inner{
-  border: 1px solid black;
   margin: 10px;
-  background-image: url(../placeholder.png);
+  background-image: url(../siroko.jpg);
   width: 25%;
   background-size: cover;
   background-position: center;
@@ -109,10 +109,16 @@ section{
   justify-content: space-between;
   border: 1px solid black;
 }
-#Header-left,#Header-right{
-  border: 1px solid black;
+#Header-left{
   margin: 10px;
-  background-image: url(../placeholder.png);
+  background-image: url(../bikelogo.png);
+  width: 25%;
+  background-size: cover;
+  background-position: center;
+}
+#Header-right{
+  margin: 10px;
+  background-image: url(../siroko.jpg);
   width: 25%;
   background-size: cover;
   background-position: center;
@@ -131,16 +137,16 @@ section{
 }
 
 .FullWidthBanner>div{
-  border: 1px solid black;
   height: 100%;
-  background-image: url(../placeholder.png);
+  background-image: url(../banner.jpg);
+  background-size: cover;
   background-position: center;
 }
 .FullWidthContent>div{
-  border: 1px solid black;
   height: 100px;
-  background-image: url(../placeholder.png);
+  background-image: url(../fullwidth.jpg);
   background-position: center;
+  background-size: cover;
 }
 #FullWidthContent > div:nth-child(2){
   text-align: center;
@@ -162,11 +168,21 @@ align-items: center;
 .ImageLeft,.ImageRight{
 flex:2em;
 }
-.ImageLeft-left,.ImageRight-left{
+.ImageLeft-left{
   height: 100%;
-  background-image: url(../placeholder.png);
+  background-image: url(../redback.jpg);
   background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+.ImageRight-left{
+  height: 100%;
+  background-image: url(../redfront.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 p{
   padding:0px;
   margin:0px;
@@ -251,6 +267,37 @@ td,th{
 input{
   background:transparent;
   border:none;
+  width:100%
+}
+.s3uploadrow{
+  display: grid;
+  grid-template-columns: 70% 30%;
+  height: 100%;
+  position:relative;
+}
+button,.s3upload{
+  width: 100%;
+      background: transparent;
+      border: none;
+      font-size: 1.3em;
+      color: white;
+    }
+
+.s3upload .status{
+  content: ' ';
+  position: absolute;
+  width: 0%;
+  background: #11fce67d;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  transition:0.5s;
+}
+
+
+
+input:focus,.s3upload:focus{
+  outline:none;
 }
 ::placeholder {
   color: white;
@@ -261,14 +308,29 @@ input{
     justify-content: space-around;
     padding: 10px 0px;
 }
-.Gimage{
-background-size: contain;
+.Gimage1{
+background-size: cover;
 height: 100px;
 width: 100%;
-background-image: url(../placeholder.png);
+background-image: url(../greenfront.jpg);
 background-position: center;
-border:1px solid black;
 }
+.Gimage2{
+background-size: cover;
+height: 100px;
+width: 100%;
+background-image: url(../yellowfront.jpg);
+background-position: center;
+}
+
+.Gimage3{
+background-size: cover;
+height: 100px;
+width: 100%;
+background-image: url(../bluefront.jpg);
+background-position: center;
+}
+
 div[class^="Groupwords-"]{
   width: 33%;
 padding: 5px;

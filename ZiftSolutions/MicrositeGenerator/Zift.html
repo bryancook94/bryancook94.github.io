@@ -58,6 +58,61 @@
       }
     </style>
 
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    //Bucket Configurations
+    var bucketName = "micrositegenerator";
+    var bucketRegion = "us-east-1";
+    var IdentityPoolId = "us-east-1:a27a26a1-99eb-4437-a03d-869810a366cb";
+
+     AWS.config.update({
+                    region: bucketRegion,
+                    accessKeyId :'AKIAJIRX5XHCHW7S2DVQ',
+                    secretAccessKey:'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'
+                });
+
+                var s3 = new AWS.S3({
+                    apiVersion: '2006-03-01',
+                    params: {Bucket: bucketName}
+
+            });
+    </script>
+
+    <script type="text/javascript">
+    function s3upload(section,name,val,id) {
+      console.log(id);
+       var files = document.getElementById(id).files;
+       if (files)
+       {
+         var file = files[0];
+         var fileName = file.name;
+         var filePath = 'my-first-bucket-path/' + fileName;
+         var fileUrl = 'https://' + bucketRegion + '.amazonaws.com/my-    first-bucket/' +  filePath;
+         s3.upload({
+            Key: filePath,
+            Body: file,
+            ACL: 'public-read'
+            }, function(err, data) {
+            if(err) {
+            console.log(err,'error');
+            }
+            //alert('Successfully Uploaded!');
+            dataupdate(section,name,data.Location,id);
+            document.querySelector(`#${id} ~ button .status`).style.width="100%";
+
+            console.log('Successfully Uploaded!',data);
+
+            }).on('httpUploadProgress', function (progress) {
+            var uploaded = parseInt((progress.loaded * 100) / progress.total);
+            $("progress").attr('value', uploaded);
+          });
+       }
+    };
+    </script>
+
+
+
   </head>
   <body style="
     background:rgb(59,167,215);
@@ -127,7 +182,7 @@
                 <section id="Group" draggable="true" ondragstart="drag(event)">
                   <div class="Groupwords">
                     <div class="Groupwords-1">
-                      <div class="Gimage">
+                      <div class="Gimage1">
                       </div>
                       <div class="groupp">
                         <p>Item 1 Heading</p>
@@ -136,7 +191,7 @@
                     </div>
 
                     <div class="Groupwords-2">
-                      <div class="Gimage">
+                      <div class="Gimage2">
                       </div>
                       <div class="groupp">
                           <p>Item 2 Heading</p>
@@ -145,7 +200,7 @@
                     </div>
 
                     <div class="Groupwords-3">
-                      <div class="Gimage">
+                      <div class="Gimage3">
                       </div>
                       <div class="groupp">
                         <p>Item 3 Heading</p>
@@ -181,7 +236,7 @@
                     <div class="Footerwords-up">
                         <p>Zift Solutions | bryancook@ziftsolutions</p>
                         <p>074 555 2 6666 | www.ziftsolutions.com</p>
-                        <p>Copyright @ 2019. All rights reserved./p>
+                        <p>Copyright @ 2019. All rights reserved.</p>
                     </div>
                     <div class="Footerwords-down">
                       <a href="#" class="fa fa-facebook"></a>
@@ -220,7 +275,7 @@
         <div class="boundary right" id="right" >
           <div class="header">
             <div>
-              <span class="glyphicon glyphicon-cog" onclick="cogstart()"></span>
+              <span class="glyphicon glyphicon-cog"></span>
             </div>
             <div id="chartc">
             </div>
@@ -341,61 +396,138 @@ if(document.getElementById('right').classList.contains("rightstart")==false){
        document.getElementById("tbody").innerHTML="";
        GlobalJSON[`ImageLeft${y}`].forEach((a,b)=>{
 
+      if(a.fieldType=="embeddedimage" && a.defaults.indexOf("micrositegenerator")<0){
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td class="s3uploadrow">
+            <input type="file" onkeypress="dataupdate('ImageLeft${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageLeft${y}" value='`+VORD(a)+`' placeholder=". . ."/>
+            <button onclick="s3upload('ImageLeft${y}','${a.name}','nullval','key-${b}')" class="s3upload"><span class="glyphicon glyphicon-upload"></span><div class="status"></div></button>
+            </td>
+          </tr>
+        `);
+      }
+      else {
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td><input onkeypress="dataupdate('ImageLeft${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageLeft${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+          </tr>
+        `);
+      }
 
-       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
-         <tr>
-           <td>${a.name}</td>
-           <td><input onkeypress="dataupdate('ImageLeft${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageLeft${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
-         </tr>
-       `)
        } )
      break;
    case "ImageRight":
        if (GlobalJSON[`ImageRight${y}`]==undefined){GlobalJSON[`ImageRight${y}`]=ImageRightJSON(y).fields;}
        document.getElementById("tbody").innerHTML="";
        GlobalJSON[`ImageRight${y}`].forEach((a,b)=>{
-       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
-         <tr>
-           <td>${a.name}</td>
-           <td><input onkeypress="dataupdate('ImageRight${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageRight${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
-         </tr>
-       `)
+
+         if(a.fieldType=="embeddedimage" && a.defaults.indexOf("micrositegenerator")<0){
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td class="s3uploadrow">
+            <input type="file" onkeypress="dataupdate('ImageRight${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageRight${y}" value='`+VORD(a)+`' placeholder=". . ."/>
+            <button onclick="s3upload('ImageRight${y}','${a.name}','nullval','key-${b}')" class="s3upload"><span class="glyphicon glyphicon-upload"></span><div class="status"></div></button>
+            </td>
+          </tr>
+        `);
+      }
+      else{
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td><input onkeypress="dataupdate('ImageRight${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageRight${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+          </tr>
+        `)
+      }
+
        } )
      break;
    case "FullWidthContent":
       if (GlobalJSON[`FullWidthContent${y}`]==undefined){GlobalJSON[`FullWidthContent${y}`]=FullWidthContentJSON(y).fields;}
        document.getElementById("tbody").innerHTML="";
        GlobalJSON[`FullWidthContent${y}`].forEach((a,b)=>{
-       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
-         <tr>
-           <td>${a.name}</td>
-           <td><input onkeypress="dataupdate('FullWidthContent${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthContent${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
-         </tr>
-       `)
+
+       if(a.fieldType=="embeddedimage" && a.defaults.indexOf("micrositegenerator")<0){
+         document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+           <tr>
+             <td>${a.name}</td>
+             <td class="s3uploadrow">
+             <input type="file" onkeypress="dataupdate('FullWidthContent${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthContent${y}" value='`+VORD(a)+`' placeholder=". . ."/>
+             <button onclick="s3upload('FullWidthContent${y}','${a.name}','nullval','key-${b}')" class="s3upload"><span class="glyphicon glyphicon-upload"></span><div class="status"></div></button>
+             </td>
+           </tr>
+         `);
+       }
+       else{
+         document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+           <tr>
+             <td>${a.name}</td>
+             <td><input onkeypress="dataupdate('FullWidthContent${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthContent${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
+           </tr>
+         `);
+       }
+
+
+
        } )
      break;
    case "FullWidthBanner":
       if (GlobalJSON[`FullWidthBanner${y}`]==undefined){GlobalJSON[`FullWidthBanner${y}`]=FullWidthBannerJSON(y).fields;}
        document.getElementById("tbody").innerHTML="";
        GlobalJSON[`FullWidthBanner${y}`].forEach((a,b)=>{
+
+     if(a.fieldType=="embeddedimage" && a.defaults.indexOf("micrositegenerator")<0){
+       document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+         <tr>
+           <td>${a.name}</td>
+           <td class="s3uploadrow">
+           <input type="file" onkeypress="dataupdate('FullWidthBanner${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthBanner${y}" value='`+VORD(a)+`' placeholder=". . ."/>
+           <button onclick="s3upload('FullWidthBanner${y}','${a.name}','nullval','key-${b}')" class="s3upload"><span class="glyphicon glyphicon-upload"></span><div class="status"></div></button>
+           </td>
+         </tr>
+       `);
+     }
+     else {
        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
          <tr>
            <td>${a.name}</td>
            <td><input onkeypress="dataupdate('FullWidthBanner${y}','${a.name}',this.value,this.id)" id="key-${b}" data="FullWidthBanner${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
          </tr>
-       `)
+       `);
+
+     }
+
+
        } )
      break;
    case "Group":
         if (GlobalJSON[`Group${y}`]==undefined){GlobalJSON[`Group${y}`]=GroupJSON(y).fields;}
         document.getElementById("tbody").innerHTML="";
         GlobalJSON[`Group${y}`].forEach((a,b)=>{
+
+      if(a.fieldType=="embeddedimage" && a.defaults.indexOf("micrositegenerator")<0){
+        document.getElementById("tbody").insertAdjacentHTML("beforeend",`
+          <tr>
+            <td>${a.name}</td>
+            <td class="s3uploadrow">
+            <input type="file" onkeypress="dataupdate('Group${y}','${a.name}',this.value,this.id)" id="key-${b}" data="Group${y}" value='`+VORD(a)+`' placeholder=". . ."/>
+            <button onclick="s3upload('Group${y}','${a.name}','nullval','key-${b}')" class="s3upload"><span class="glyphicon glyphicon-upload"></span><div class="status"></div></button>
+            </td>
+          </tr>
+        `);
+      }
+      else {
         document.getElementById("tbody").insertAdjacentHTML("beforeend",`
           <tr>
             <td>${a.name}</td>
             <td><input onkeypress="dataupdate('Group${y}','${a.name}',this.value,this.id)" id="key-${b}" data="Group${y}" value='`+VORD(a)+`' placeholder=". . ."/></td>
           </tr>
-        `)
+        `);
+      }
+
       } );
         break;
     case "Header":
@@ -458,9 +590,6 @@ var GlobalJSON={
   "shell":getdata().fields,
 }
 
-//https://wilcity.com/wp-content/uploads/2018/12/sample-logo-design-png-3.png
-//https://www.bumbleance.com/wp-content/uploads/2013/06/banner-sample.jpg
-
 
 function dataupdate(func,key,val,id){
   if(func.match(/[0-9]/g)==null){var funcText=func+"JSON";} else {var funcText=func.replace(new RegExp("[0-9]", "g"), "JSON");}
@@ -481,19 +610,22 @@ function start(){
 
   document.getElementById('center').classList.toggle("centerstart");
   document.getElementById('dropzone').classList.toggle("whiteborder");
+  document.getElementById('dropzone').scrollTop=0;
 
   document.getElementById('left').classList.toggle("leftstart");
   document.getElementById('ReadySectionsInner').classList.toggle("whiteborder");
-
   document.getElementById('ReadySectionsInner').scrollTop=0;
-  document.getElementById('dropzone').scrollTop=0;
+
+  document.getElementById('right').classList.toggle("rightstart");
+  document.getElementById('settings').classList.toggle("whiteborder");
+  document.getElementById('settings').scrollTop=0;
+
 }
 
 function cogstart(){
-  document.getElementById('right').classList.toggle("rightstart");
-  document.getElementById('settings').classList.toggle("whiteborder");
-
-  document.getElementById('settings').scrollTop=0;
+/*
+  used in the future to call puppeteer script.
+*/
 
 }
 
