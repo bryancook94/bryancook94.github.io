@@ -68,8 +68,8 @@
 
      AWS.config.update({
                     region: bucketRegion,
-                    accessKeyId :'xxx',
-                    secretAccessKey:'xxx'
+                    accessKeyId :'',
+                    secretAccessKey:''
                 });
 
                 var s3 = new AWS.S3({
@@ -100,6 +100,9 @@
             //alert('Successfully Uploaded!');
             dataupdate(section,name,data.Location,id);
             document.querySelector(`#${id} ~ button .status`).style.width="100%";
+
+            var target=name.replace(/\s/g,"_");
+            document.querySelectorAll('#dropzone .'+target)[0].style.backgroundImage="url("+data.Location+")";
 
             console.log('Successfully Uploaded!',data);
 
@@ -135,58 +138,90 @@
           <div class="body leftdown" id="ReadySections">
           <div id="ReadySectionsInner" style="overflow: scroll;" onscroll="myFunction(this)">
 
+
+              <div id="Header-case" class="case">
                 <section id="Header"  draggable="true" ondragstart="drag(event)">
                   <div class="Header-inner" id="Header-inner"></div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
 
 
+              <div id="HeaderTwoLogos-case" class="case">
                 <section id="HeaderTwoLogos"  draggable="true" ondragstart="drag(event)">
                   <div class="Header-left" id="Header-left"></div>
                   <div class="Header-right" id="Header-right"></div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
-                <section id="FullWidthBanner" draggable="true" ondragstart="drag(event)">
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+              <div id="FullWidthBanner-case" class="case">
+                <section id="FullWidthBanner" draggable="true" ondragstart="drag(event)" >
                   <div class="FullWidthBanner">
                     <div>
                     </div>
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+              <div id="FullWidthContent-case" class="case">
                 <section id="FullWidthContent" draggable="true" ondragstart="drag(event)">
                   <div class="FullWidthContent">
                     <div>
                     </div>
                   </div>
-                  <div>
-                    Full Width Content
+                  <div class="groupp">
+                    <p class="grouptitle">Full Width Content</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>
+                    <div class="btn formbutton">Button</div>
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+
+              <div id="ImageLeft-case" class="case">
                 <section id="ImageLeft" draggable="true" ondragstart="drag(event)">
-                  <div class="ImageLeft ImageLeft-left">
+                  <div class="ImageLeft ImageLeft-left Image_Left_Image">
                   </div>
                   <div class="ImageLeft ImageLeft-right">
-                      Image Left Text
+                      <div class="groupp">
+                        <p class="grouptitle">Image Left Text</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="btn formbutton">Button</div>
+                      </div>
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+
+              <div id="ImageRight-case" class="case">
                 <section id="ImageRight" draggable="true" ondragstart="drag(event)">
                   <div class="ImageRight ImageRight-right">
-                    Image Right Text
+                    <div class="groupp">
+                      <p class="grouptitle">Image Right Text</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      <div class="btn formbutton">Button</div>
+                    </div>
                   </div>
                   <div class="ImageRight ImageRight-left">
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+              <div id="Group-case" class="case">
                 <section id="Group" draggable="true" ondragstart="drag(event)">
                   <div class="Groupwords">
                     <div class="Groupwords-1">
                       <div class="Gimage1">
                       </div>
                       <div class="groupp">
-                        <p>Item 1 Heading</p>
-                          <div class="btn formbutton">Button</div>
+                        <p class="grouptitle">Item 1</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        <div class="btn formbutton">Button</div>
                       </div>
                     </div>
 
@@ -194,8 +229,9 @@
                       <div class="Gimage2">
                       </div>
                       <div class="groupp">
-                          <p>Item 2 Heading</p>
-                          <div class="btn formbutton">Button</div>
+                        <p class="grouptitle">Item 2</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        <div class="btn formbutton">Button</div>
                       </div>
                     </div>
 
@@ -203,15 +239,32 @@
                       <div class="Gimage3">
                       </div>
                       <div class="groupp">
-                        <p>Item 3 Heading</p>
-                          <div class="btn formbutton">Button</div>
+                        <p class="grouptitle">Item 3</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                        <div class="btn formbutton">Button</div>
                       </div>
                     </div>
 
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
 
+              <div id="ValueProp-case" class="case">
+                <section id="ValueProp" draggable="true" ondragstart="drag(event)">
+                  <div class="ValueProp">
+                    <div class="groupp">
+                      <p class="grouptitle">Value Proposition</p>
+                      <div class="btn formbutton">Button</div>
+                    </div>
+
+                  </div>
+                </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+
+              <div id="Contact-case" class="case">
                 <section id="Contact" draggable="true" ondragstart="drag(event)">
                   <div class="Contactwords">
                     <div class="Contactwords-heading">
@@ -224,13 +277,51 @@
                       <input type="text" name="" placeholder="Phone Number"></input>
                       <textarea type="text" name="" placeholder="Message"></textarea>
                     </form>
-                    <div class="btn btn formbutton">
+                    <div class="btn btn formbutton formbuttonitself">
                       Button
                     </div>
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
 
+              <div id="ContactAlt2-case" class="case">
+                <section id="ContactAlt2" draggable="true" ondragstart="drag(event)">
+                  <div>
+                    <div class="Contactwords">
+                      <div class="Contactwords-heading">
+                        Heading Text
+                      </div>
+                      <form>
+                        <input type="text" name="" placeholder="First Name *"></input>
+                        <input type="text" name="" placeholder="Last Name *"></input>
+                        <input type="text" name="" placeholder="Email Address *"></input>
+                        <input type="text" name="" placeholder="Phone Number"></input>
+                        <textarea type="text" name="" placeholder="Message"></textarea>
+                      </form>
+                      <div class="btn btn formbutton formbuttonitself">
+                        Button
+                      </div>
+                    </div>
+                    <div class="Footerwords">
+                      <div class="Footerwords-up">
+                          <p>Zift Solutions | bryancook@ziftsolutions</p>
+                          <p>074 555 2 6666 | www.ziftsolutions.com</p>
+                          <p>Copyright @ 2019. All rights reserved.</p>
+                      </div>
+                      <div class="Footerwords-down">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-google"></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
+
+
+              <div id="Footer-case" class="case">
                 <section id="Footer" draggable="true" ondragstart="drag(event)">
                   <div class="Footerwords">
                     <div class="Footerwords-up">
@@ -243,13 +334,11 @@
                       <a href="#" class="fa fa-twitter"></a>
                       <a href="#" class="fa fa-google"></a>
                       <a href="#" class="fa fa-linkedin"></a>
-
                     </div>
-
                   </div>
-                  <div class="accident" onclick="accident(this)">x</div>
-
                 </section>
+                <div class="accident" onclick="accident(this)">x</div>
+              </div>
 
 
           </div>
@@ -307,11 +396,14 @@
 <script>
 
 function accident(node){
-      node.parentNode.remove();
+  delete GlobalJSON[node.previousElementSibling.getAttribute("id")];
+  console.log(GlobalJSON);
+  node.parentNode.remove();
       }
 
 
 function allowDrop(ev,x) {
+console.log(ev.target.id);
 ev.preventDefault();
 }
 
@@ -325,13 +417,13 @@ function drop(ev,target) {
   //console.log("here!",ev,"==>",ev.target.id);
 ev.preventDefault();
 var data = ev.dataTransfer.getData("text");
-  //console.log("dddd",data,ev.target.id);
+console.log("dddd",data,ev.target.id);
   if(ev.target.getAttribute("id")!==null && ev.target.id=="dropzone"){
     //ev.target.appendChild();
-    ev.target.insertAdjacentHTML("beforeend",document.getElementById(data).outerHTML);
+    ev.target.insertAdjacentHTML("beforeend",document.getElementById(data+"-case").outerHTML);
     //ev.target.insertAdjacentHTML("beforeend",insertchunk(data));
 
-    document.querySelectorAll('#dropzone > section[id^="'+data+'"]').forEach((item,i)=>{
+    document.querySelectorAll('#dropzone  section[id^="'+data+'"]').forEach((item,i)=>{
       item.setAttribute("data",i);
       item.setAttribute("onclick","createtable(this.id,this.getAttribute('data'))");
     });
@@ -349,14 +441,14 @@ var data = ev.dataTransfer.getData("text");
 
 
 const dragEnter = event => {
-  event.currentTarget.classList.add('drop');
+  event.currentTarget.classList.add('drop_');
 };
 
 const dragLeave = event => {
-  event.currentTarget.classList.remove('drop');
+  event.currentTarget.classList.remove('drop_');
 };
 
-Array.from(document.querySelectorAll('div[class^="column"]')).forEach(column => {
+Array.from(document.querySelectorAll('#dropzone section')).forEach(column => {
   column.addEventListener('dragenter', dragEnter);
   column.addEventListener('dragleave', dragLeave);
 });
@@ -377,18 +469,7 @@ function SectionsData(){
 function VORD(item){ if(item.values.length>0){ return item.values} else{ return item.defaults} };
 
 function createtable(x,y){
-
-document.getElementById('chartc').innerHTML='';
-// if it isn't open already. open the fields table
-// seems to be calling when you remove a node. commented it out for now
-/*
-if(document.getElementById('right').classList.contains("rightstart")==false){
-  document.getElementById('right').classList.add("rightstart");
-  document.getElementById('settings').classList.add("whiteborder");
-}
-*/
-
- //console.log(x,"==>",y);
+  document.getElementById('chartc').innerHTML='';
 (y==0?y="":y=y);
  switch(x){
    case "ImageLeft":
@@ -586,7 +667,7 @@ if(document.getElementById('right').classList.contains("rightstart")==false){
 
 }
 
-var GlobalJSON={
+let GlobalJSON={
   "shell":getdata().fields,
 }
 

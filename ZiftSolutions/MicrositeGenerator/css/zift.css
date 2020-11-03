@@ -160,7 +160,6 @@ align-items: center;
 }
 
 #ImageLeft,#ImageRight{
-  height: 100px;
   display: flex;
   justify-content: space-around;
   border: 1px solid black;
@@ -169,14 +168,12 @@ align-items: center;
 flex:2em;
 }
 .ImageLeft-left{
-  height: 100%;
   background-image: url(../redback.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .ImageRight-left{
-  height: 100%;
   background-image: url(../redfront.jpg);
   background-position: center;
   background-size: contain;
@@ -195,14 +192,14 @@ p{
 }
 .ImageLeft-right  p:nth-child(1,.ImageRight-right  p:nth-child(1)){
   margin-top: 5px;
- font-size: 1.1em;
+ font-size: 10px;
 }
 .ImageLeft-right  p:nth-child(2),.ImageRight-right  p:nth-child(2){
-  font-size: 0.9em;
+  font-size: 10px;
     padding: 3px;
 }
 .ImageLeft-right > p:nth-child(3),.ImageRight-right  p:nth-child(3){
-  font-size: 0.9em;
+  font-size: 10px;
     background: #17a2b8;
     color: white;
     padding: 5px;
@@ -339,6 +336,11 @@ padding: 5px;
   font-size: 10px;
 margin: 5px;
 }
+
+.grouptitle{
+  font-size: 1.1em !important;
+  font-weight: 600;
+}
 .groupp{
   text-align:center;
 
@@ -362,21 +364,48 @@ color: white;
 .Contactwords form ::placeholder {
 color:black;
 }
+#ContactAlt2>div{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+#ContactAlt2>div>.Footerwords{
+  background: #191313;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#ContactAlt2 .fa{
+  height: 20px;
+      width: 20px;
+      margin: 1px;
+      padding: 5px;
+    }
+
 .formbutton{
   background: #c12e64 !important;
-  padding: 3px !important;
+  padding: 5px !important;
   margin-bottom: 10px !important;
   font-size: 10px !important;
+}
+.formbuttonitself{
   margin-left: 10% !important;
+}
+.ValueProp{
+  padding:10px;
 }
 .btn {
     color: #fff;
     background-color: #5bc0de;
     border-color: #46b8da;
     font-size: 10px;
-    padding: 2px !important;
     margin: 0px;
     margin-bottom: 10px;
+}
+.btn:hover {
+    color: #fff !important;
+    text-decoration: none;
 }
 .fa{
     display: inline;
@@ -427,11 +456,12 @@ section{
   color: white;
 }
 
-#ReadySectionsInner section .accident,#dropzone section .accident{
+#ReadySectionsInner .accident,#dropzone .accident{
   display: none;
 }
+.case{position:relative}
 
-#dropzone section:hover .accident{
+#dropzone div:hover .accident{
   display: flex;
 }
 #chart,#chartb,#chartc{
@@ -441,3 +471,7 @@ section{
   z-index: -1;
 }
 svg{fill:#c12e64}
+
+.drop{
+border-top: 4px red dashed !important
+}
