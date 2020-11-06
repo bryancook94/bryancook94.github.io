@@ -66,11 +66,19 @@
     var bucketRegion = "us-east-1";
     var IdentityPoolId = "us-east-1:a27a26a1-99eb-4437-a03d-869810a366cb";
 
+/*
      AWS.config.update({
                     region: bucketRegion,
                     accessKeyId :'',
                     secretAccessKey:''
                 });
+                */
+      AWS.config.update({
+        region: bucketRegion,
+        credentials: new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: IdentityPoolId
+        })
+      });
 
                 var s3 = new AWS.S3({
                     apiVersion: '2006-03-01',
@@ -88,7 +96,7 @@
          var file = files[0];
          var fileName = file.name;
          var filePath = 'my-first-bucket-path/' + fileName;
-         var fileUrl = 'https://' + bucketRegion + '.amazonaws.com/my-    first-bucket/' +  filePath;
+         var fileUrl = 'https://' + bucketRegion + '.amazonaws.com/my-first-bucket/' +  filePath;
          s3.upload({
             Key: filePath,
             Body: file,
@@ -396,6 +404,7 @@
 <script>
 
 function accident(node){
+  document.getElementById("tbody").innerHTML="";
   delete GlobalJSON[node.previousElementSibling.getAttribute("id")];
   console.log(GlobalJSON);
   node.parentNode.remove();
@@ -477,13 +486,14 @@ function createtable(x,y){
        document.getElementById("tbody").innerHTML="";
        GlobalJSON[`ImageLeft${y}`].forEach((a,b)=>{
 
-      if(a.fieldType=="embeddedimage" && a.defaults.indexOf("micrositegenerator")<0){
+      if(a.fieldType=="embeddedimage" /*&& a.defaults.indexOf("micrositegenerator")<0*/){
         document.getElementById("tbody").insertAdjacentHTML("beforeend",`
           <tr>
             <td>${a.name}</td>
             <td class="s3uploadrow">
             <input type="file" onkeypress="dataupdate('ImageLeft${y}','${a.name}',this.value,this.id)" id="key-${b}" data="ImageLeft${y}" value='`+VORD(a)+`' placeholder=". . ."/>
             <button onclick="s3upload('ImageLeft${y}','${a.name}','nullval','key-${b}')" class="s3upload"><span class="glyphicon glyphicon-upload"></span><div class="status"></div></button>
+            <p>`+VORD(a)+`</p>
             </td>
           </tr>
         `);
@@ -689,14 +699,18 @@ function dataupdate(func,key,val,id){
 
 function start(){
 
+  document.getElementById('dropzone').classList.toggle("dropzone");
   document.getElementById('center').classList.toggle("centerstart");
   document.getElementById('dropzone').classList.toggle("whiteborder");
   document.getElementById('dropzone').scrollTop=0;
 
+
   document.getElementById('left').classList.toggle("leftstart");
+  document.getElementById('ReadySectionsInner').classList.toggle("dropzone");
   document.getElementById('ReadySectionsInner').classList.toggle("whiteborder");
   document.getElementById('ReadySectionsInner').scrollTop=0;
 
+  document.getElementById('settings').classList.toggle("dropzone");
   document.getElementById('right').classList.toggle("rightstart");
   document.getElementById('settings').classList.toggle("whiteborder");
   document.getElementById('settings').scrollTop=0;
@@ -729,7 +743,7 @@ function insertchunk(functioncall,assetid){
 }
 
 function exportthis(){
-  if(document.querySelectorAll('#dropzone > section').length==0){
+  if(document.querySelectorAll('#dropzone section').length==0){
     alert("Try creating something first!")
   }
   else {
