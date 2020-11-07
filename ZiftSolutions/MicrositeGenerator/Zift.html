@@ -467,7 +467,7 @@ Array.from(document.querySelectorAll('#dropzone section')).forEach(column => {
 
 var Sections=[];
 function SectionsData(){
-  document.querySelectorAll('#dropzone > section').forEach((item, i) => {
+  document.querySelectorAll('#dropzone  > div > section').forEach((item, i) => {
     var input="";
     (parseInt(item.getAttribute("data"))==0?input=item.id:input=item.id+" "+item.getAttribute("data"));
     Sections.push(input);
