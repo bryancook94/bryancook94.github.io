@@ -135,6 +135,7 @@ function projects(){
     <div class="options option1"><div onclick="swap('AutoKudos')">AutoKudos</div></div>
     <div class="options option2"><div onclick="swap('Sub3')">Project-Sub3</div></div>
     <div class="options option3"><div onclick="swap('doallmywork')">Doallmywork.com</div></div>
+    <div class="options option4"><div onclick="swap('witneyvelo')">WitneyVelo.com</div></div>
   `);
 }
 function games(){
@@ -225,6 +226,13 @@ var data={
             "text2":"<br/>This project also includes generators for construction of microsites (doallmywork.com/microsite) and emails (doallmywork.com/email) and uses these technologies react, redux, puppeteer, nginx.",
             "url":"https://doallmywork.com/microsite",
           },
+  "witneyvelo":{
+            "name":"WitneyVelo.com",
+            "photo":"https://iambryancook.info/images/wvlogo.png",
+            "text":"Hosted on S3, this was a fun project to help support my brother's formation of a new local cycling club. A club with less rules and more fun!",
+            "text2":"<br/> A create-react-app using Strava to identify users before they upload to the gallery. It also displays local weather data and our favourite collection of routes with plans for more features.",
+            "url":"https://witneyvelo.com/",
+          },
   "darts":{
             "name":"Darts Scorer",
             "photo":"https://iambryancook.info/images/darts3.png",
@@ -284,6 +292,15 @@ function swap(val){
       document.getElementById("anchor").style.pointerEvents = "initial";
       break;
     case "doallmywork":
+      document.querySelector('#quote span:nth-child(1)').innerHTML="Project";
+      document.querySelector('#quote span:nth-child(2)').innerHTML=name;
+      document.querySelector('#image').style.backgroundImage='url("'+photo+'")'
+      document.getElementById('main-block-text').innerHTML=text;
+      document.getElementById('main-block-text2').innerHTML=text2;
+      document.getElementById('anchor').href=url;
+      document.getElementById("anchor").style.pointerEvents = "initial";
+      break;
+    case "witneyvelo":
       document.querySelector('#quote span:nth-child(1)').innerHTML="Project";
       document.querySelector('#quote span:nth-child(2)').innerHTML=name;
       document.querySelector('#image').style.backgroundImage='url("'+photo+'")'

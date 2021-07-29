@@ -309,7 +309,7 @@ display: grid;
   max-width: 600px;
   margin: auto;
   color: white;
-  padding-top: 20px;
+  padding-top: 30px;
   font-size: inherit;
   /*
   max-height 200px? else shift into mobile stacked view
