@@ -205,57 +205,52 @@ document.querySelector('#tests').scrollIntoView()
               </div>
             </div>
     </div>
-    <html class="col-12">
+    <div class="col-12">
       <div class="delete" onclick="deleteNode(this)"><i class="fa-solid fa-trash-can"></i></div>
         <div class="card" onclick="select(this)">
           <img src="https://bryancook94.github.io/games/fraser.jpg" alt="Fraser" style="width:100%">
           <div class="even-row">
-                <div class="info">
-                  <h3>Fraser</h3>
-                  <h1 class="game">301</h1>
-                </div>  
-                <div style="margin: 5px 0px 25px 0px;">
-                  <table id="Fraser">
-                        <tbody class="scored">
-                        </tbody>
-                  </table>
-                </div>
-                      <div class="radio game-selection"> 
-                        <input type="range" class="slider-track" min="1" max="5" onChange="selectGame(this)">
-                      </div>
+          <div class="info">
+            <h3>Fraser</h3>
+            <h1 class="game">301</h1>
+          </div>  
+          <div style="margin: 5px 0px 25px 0px;">
+            <table id="Fraser">
+                  <tbody class="scored">
+                  </tbody>
+            </table>
           </div>
-
+                <div class="radio game-selection"> 
+                  <input type="range" class="slider-track" min="1" max="5" onChange="selectGame(this)"> 
+                </div>
         </div>
+      </div>
     </div>
     <div class="col-12">
       <div class="delete" onclick="deleteNode(this)"><i class="fa-solid fa-trash-can"></i></div>
         <div class="card" onclick="select(this)">
           <img src="https://bryancook94.github.io/games/rupert.jpg" alt="Rupert" style="width:100%">
           <div class="even-row">
-            <div class="info">
-              <h3>Rupert</h3>
-              <h1 class="game">301</h1>
-            </div>  
-            <div style="margin: 5px 0px 25px 0px;">
-              <table id="Rupert">
-                    <tbody class="scored">
-                    </tbody>
-              </table>
-            </div>
-                <div class="radio game-selection"> 
-                 <input type="range" class="slider-track" min="1" max="5" onChange="selectGame(this)">
-                </div>
+          <div class="info">
+            <h3>Rupert</h3>
+            <h1 class="game">301</h1>
           </div>  
+          <div style="margin: 5px 0px 25px 0px;">
+            <table id="Rupert">
+                  <tbody class="scored">
+                  </tbody>
+            </table>
+          </div>
+                <div class="radio game-selection"> 
+                  <input type="range" class="slider-track" min="1" max="5" onChange="selectGame(this)"> 
+                </div>
         </div>
-      </img>
-
+      </div>
     </div>
+</div>
 
-  </div>
+
  </div>
-
-
- </body>
  <style>
   html{
   scroll-behavior: smooth;
@@ -299,7 +294,7 @@ input[type="range"]::-webkit-slider-thumb{
   background:black;
     color:red;
 }
-body {
+body,html {
   font-family: "Lato", sans-serif;
   font-size:20px;
   
@@ -321,6 +316,12 @@ background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, F
 }
 .row{
   
+}
+.game{
+  font-size:3em;
+}
+td{
+  font-size:1.5em;
 }
 .sidebar {
   height: 100%;
@@ -436,7 +437,7 @@ div[class*="col-"]{
   position:absolute;
   font-size:25px;
   top: calc(50% - 25px);
-  right: 8%;
+  right: 15%;
   color:rgba(0,0,0,0.3);
   z-index:5;
   cursor:pointer;
