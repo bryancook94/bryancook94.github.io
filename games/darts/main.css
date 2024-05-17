@@ -1,0 +1,391 @@
+html{
+    scroll-behavior: smooth;
+  }
+  
+  #checkouts-range::-webkit-slider-thumb,
+  input[type="range"]::-webkit-slider-thumb{
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: whitesmoke; 
+    border-radius:5px;
+    cursor: pointer; /* Cursor on hover */
+     -webkit-appearance: none !important;
+      appearance: none !important;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    /*clip-path: polygon(0% 0%, 100% 0%, 0% 100%);*/
+    /*  transform: rotateZ(-135deg);*/
+  }
+  #checkouts-range{
+      width: 100%;
+      background: whitesmoke;
+      height:5px;
+      border-radius:5px;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+  .slider-track{
+      position: absolute;
+      width: 100%;
+      background: whitesmoke;
+      z-index: 3;
+      bottom: 0px;
+      height:5px;
+      border-radius:5px;
+      left: 0%;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+    .slider-track::-webkit-slider-thumb {
+    background:black;
+      color:red;
+  }
+  body,html {
+    font-family: "Lato", sans-serif;
+    font-size:20px;
+    
+    background: #1f4037;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #99f2c8, #1f4037); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+  }
+  .row-container{
+      height: calc(100vh - 70px);
+      overflow-y: scroll;
+      margin-top: 50px;
+  }
+  .sidebar::-webkit-scrollbar,body::-webkit-scrollbar,.row-container::-webkit-scrollbar {
+    display: none;
+  }
+  .hidden{
+    display:none !important;
+  }
+  .row{
+    
+  }
+  .game{
+    font-size:3em;
+  }
+  td{
+    font-size:1.5em;
+  }
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    border-right: 1px solid #ffffff38;
+  }
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color:red;
+  }
+  .button-nav{
+    display:flex;
+    position:fixed;
+    width: -webkit-fill-available;
+  }
+  .side-menu{
+    margin-top:1rem;
+    padding-left:0px;
+  
+    li{
+      list-style-type:none;
+      a{
+        padding: 0px;
+      }
+    }
+    
+  }
+  .center{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+  }
+  .sidebar .closebtn {
+  /*  position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color:white;
+    */
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: none;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+   /* background-color: white;*/
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+  
+  /*==================================*/
+  /*==================================*/
+  /*========  End of the menu above ==*/
+  /*==================================*/
+  /*==================================*/
+  
+  .card {
+        
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    cursor:pointer;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    
+    max-height:170px;
+      max-height: 170px;
+      background: #e3e3e369;
+      backdrop-filter: blur(8px);
+  }
+  .card-active{
+  /*  animation: pulsate 0.1s infinite alternate;  */
+  background: linear-gradient(145deg, #e5dddd63, #848542bd);
+  }
+  div[class*="col-"]{
+    margin:10px 0px;
+    position:relative;
+  }
+  .delete{
+    position:absolute;
+    font-size:25px;
+    top: calc(50% - 25px);
+    right: 15%;
+    color:rgba(0,0,0,0.3);
+    z-index:5;
+    cursor:pointer;
+  }
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  .info{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;  
+      color:white;
+   
+    h3{
+      display:none !important;
+    }
+    h1,h2,h3{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+  }
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+  
+  img{
+      border-radius: 10px;
+      padding: 5px;
+      max-height: 150px;
+      width: 100%;
+      display: flex;
+      height: auto;
+      justify-content: center;
+      align-items: center;
+      max-width: 150px;
+      margin:auto 0px;
+      transition:1s;
+  }
+  /*==================================*/
+  /*==================================*/
+  /*========  End of the cards above ==*/
+  /*==================================*/
+  /*==================================*/
+  
+  
+  table {
+    padding: 10px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 8px;
+  }
+  .scored{
+      display: inline-flex;
+      flex-wrap: wrap;
+      color:white;
+  }
+  .even-row{
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      justify-content: flex-start;
+      margin-left: 25px;
+      position:relative;
+  }
+  .scored tr:nth-of-type(1n+4){
+    display:none;
+  }
+  .keyboardbox{
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    
+  
+  }
+  
+  .keyboard-shape{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .keyboard{
+    font-size:3em;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    min-height:150px;
+    cursor:pointer;  
+    border: 1px solid #ffffff1f;
+    border-radius:5px;
+    margin:5px;
+    
+    background: #e3e3e369;
+    backdrop-filter: blur(8px);
+  
+  }
+  
+  
+  
+  .Checkouts{
+     padding: 10px;
+  }
+  .Checkouts-shape{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-areas: 
+              "a1 a1 a1 a2"
+              "range range range range"
+              "b1 b2 b3 b4"
+              "c1 c2 c3 c4"
+              "d1 d2 d3 d4";
+  }
+  .checkouts-range input{
+    width:100%;
+    margin:20px;
+  }
+  .Checkouts-item{
+    font-size:3em;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    min-height:150px;
+    cursor:pointer;  
+    border: 1px solid #ffffff1f;
+    border-radius:5px;
+    margin:5px;
+    
+    background: #e3e3e369;
+    backdrop-filter: blur(8px);
+  }
+  #Checkout-input{
+      border: none;
+      background: none;
+      color: white;
+      width: 200px;
+  }
+  select{
+      border: none;
+      background: none;
+      color: white;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @keyframes pulsate {
+      
+    100% {
+        border: 5px solid white;
+        box-shadow: 0px 0px 33px 6px lime, inset 0px 0px 12px 6px #1dd3ce;
+  
+    }
+    
+    0% {
+       border: 5px solid white;
+      box-shadow: 0px 0px 35px 6px #1dd3ce, inset 0px 0px 12px 6px #2f83a4;
+  }
+  
+    
+    
+    /*........................................*/
+  /*
+    @media (max-width: 600px) {
+    #mySidebar {
+      width:50vw;
+    }
+  }
+    */
+    .slider-track{
+              background: green !important;
+              -webkit-appearance: none !important;
+              appearance: none !important;
+    }
+    
