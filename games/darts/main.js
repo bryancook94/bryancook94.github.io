@@ -23,7 +23,7 @@
       }
     });
     
-    console.log(player);
+    //console.log(player);
     return player
   }
   function action(val){
@@ -34,10 +34,10 @@
     
     let currentplayerscore=document.querySelector(`*[id="${currentplayer}"]`).closest("div.card").querySelector(".game").innerText;
     
-    console.log(va,isNumber(va),currentplayer,currentplayerscore);
+    //console.log(va,isNumber(va),currentplayer,currentplayerscore);
     if(isNumber(va)==true){
       scoreCount=scoreCount+va
-      console.log("scoreCount",scoreCount)
+      //console.log("scoreCount",scoreCount)
     }
     
     if(da=="back"){
@@ -70,14 +70,20 @@
   }
 
   function checkout(val){
+    arrToSlide=undefined;
+
     let search=document.querySelector(`#Checkout-input`).value;
     let searchNum=parseInt(search);
     let outcome=findFinish(searchNum);
-    console.log(outcome);
+    //console.log(outcome);
+
+    //clear previous results
+    [...document.querySelectorAll(`option[data-combination*=","]`)].forEach((item,pos)=>{item.remove()})
+
     for(let i=0;i<outcome.length;i++){
       let dartSet=outcome[i].reverse();
       let darts=dartSet;
-      console.log("darts",darts);
+      //console.log("darts",darts);
       for(let j=0;j<dartSet.length;j++){
         let dartNum=(j+1);
         let dart=darts[j]
@@ -88,7 +94,7 @@
           //does this option exist
           let optTest=document.querySelector(`#${keyy}-dart-${dartNum} option[value="${vall}"]`);
           if(optTest==null){
-            console.log(`#${keyy}-dart-${dartNum}`,document.querySelector(`#${keyy}-dart-${dartNum}`));
+            //console.log(`#${keyy}-dart-${dartNum}`,document.querySelector(`#${keyy}-dart-${dartNum}`));
             document.querySelector(`#${keyy}-dart-${dartNum}`).insertAdjacentHTML(`afterbegin`,`
             <option value="${vall}" data-combination="${i}">${vall}</option>
             `);
@@ -111,9 +117,6 @@
 
               let dc=item.getAttribute("data-combination");
               let dcarr=dc.split(",")
-            /*  if(item.value=="?"){
-                item.selected=true;
-              }*/
               if(dcarr.includes(current)){
                   item.selected=true;
               }
@@ -149,7 +152,7 @@ function selectGame(val){
   let num=parseInt(val.value);
   let player=val.closest(".card").querySelector("table").id;
   let currentScore=parseInt(val.closest(".card").querySelector(".game").innerText);
-  console.log(val.value,player,currentScore);
+  //console.log(val.value,player,currentScore);
   
   //set new score
   val.closest(".card").querySelector(".game").innerText=val.value+"01";
@@ -237,34 +240,35 @@ function findFinish(val){
         let p=[...finalAnswerSpace];
         let pp=p.map((item)=>{return JSON.stringify(item)})
         let ppp=[...new Set(pp)].map((item)=>{return JSON.parse(item)})
-        console.log(ppp,"Final Answer Space for starting with : ",score, ` which has ${ppp.length} possible outcomes`)
+        //console.log(ppp,"Final Answer Space for starting with : ",score, ` which has ${ppp.length} possible outcomes`)
         
         return ppp
 }
 
 
+var arrToSlide=undefined;
 function updateOutcome(val){
-    let current=val.value;
-    let arr=current.split(",");
-  for(let i=0;i<arr.length;i++){
-          let current=arr[i];
+          let current=val.value;
+          //console.log("    current",current)
+          if(arrToSlide){
+            document.querySelector(`#checkouts-range`).setAttribute("min",0);
+            document.querySelector(`#checkouts-range`).setAttribute("max",arrToSlide.length-1);
+
+            current=arrToSlide[val.value];
+            //console.log("new current",current)
+          }
+
+            
           let nodes=[...document.querySelectorAll(`*[data-combination]`)]
           nodes.forEach((item)=>{if(item.value=="?"){item.selected=true;}})
+
           nodes.forEach((item,pos)=>{
-   
             let dc=item.getAttribute("data-combination");
             let dcarr=dc.split(",")
-          /*  if(item.value=="?"){
-              item.selected=true;
-            }*/
             if(dcarr.includes(current)){
                 item.selected=true;
             }
-      
-  
           })
-  
-  }
 }
 
 var scoreCount="";
@@ -281,3 +285,18 @@ function screen(){
   }
 
  }  
+
+
+ 
+ let selects=[...document.querySelectorAll(`select[id*="-dart-"]`)]
+ selects.forEach(select => {
+  select.addEventListener('change', (elem) => {
+      let valueSelected=elem.target.value;
+      let optionNode=elem.target.querySelector(`option[value="${valueSelected}"]`);
+      let dcArr=optionNode.getAttribute("data-combination").split(",");
+      //console.log(valueSelected,dcArr,"@")
+      arrToSlide=dcArr
+      updateOutcome(valueSelected);
+    })
+});
+
