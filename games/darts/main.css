@@ -18,7 +18,7 @@ html{
   }
   #checkouts-range{
       width: 100%;
-      background: whitesmoke;
+      background: dimgrey;
       height:5px;
       border-radius:5px;
       -webkit-appearance: none !important;
@@ -27,12 +27,12 @@ html{
   .slider-track{
       position: absolute;
       width: 100%;
-      background: whitesmoke;
+      background: dimgrey;
       z-index: 3;
-      bottom: 0px;
-      height:5px;
+      bottom: 15px;
+      height: 5px;
       border-radius:5px;
-      left: 0%;
+      left: -20px;
       -webkit-appearance: none !important;
       appearance: none !important;
     }
@@ -294,10 +294,10 @@ html{
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
+    color:dimgrey;
     min-height:150px;
     cursor:pointer;  
-    border: 1px solid #ffffff1f;
+    border: 1px solid dimgrey;
     border-radius:5px;
     margin:5px;
     
@@ -330,10 +330,10 @@ html{
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
+    color:dimgrey;
     min-height:150px;
     cursor:pointer;  
-    border: 1px solid #ffffff1f;
+    border: 1px solid dimgrey;
     border-radius:5px;
     margin:5px;
     
@@ -343,13 +343,19 @@ html{
   #Checkout-input{
       border: none;
       background: none;
-      color: white;
+      color: dimgrey;
       width: 200px;
+      outline: none;
+  }
+  #Checkout-input:focus{
+    border: none;
+    outline: none;
   }
   select{
+      outline: none;
       border: none;
       background: none;
-      color: white;
+      color: dimgrey;
   }
   
   
