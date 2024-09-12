@@ -1,0 +1,53 @@
+
+:root{
+--dot:25px;
+--background:red;
+}
+
+*{
+    padding:0px;
+    margin:0px;
+    border-radius: 0px;
+}
+
+body{
+    height:100vh;
+    width:100%;
+
+    #container{
+        position: relative;
+        height:100%;
+        width:100%;
+        display:grid;
+        grid-template-areas: 'a b'
+                            'c d';
+        grid-template-columns: 50% 50%;        
+        grid-template-rows: 50% 50%;    
+
+        #dot{
+            position: absolute;
+            top:calc(50% - (var(--dot)/2));
+            left:calc(50% - (var(--dot)/2));
+            height:var(--dot);
+            width:var(--dot);
+            border-radius: var(--dot);
+            background:red;
+            cursor: grab;
+        }
+
+        #bottom-right{
+            overflow-y: scroll;
+        }
+        
+    }
+
+    
+}
+.border{
+    border:1px dashed black !important;
+}
+.margin{
+    margin:15px 5px;
+}.padding{
+    padding:5px 5px;
+}

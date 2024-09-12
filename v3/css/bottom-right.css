@@ -1,0 +1,60 @@
+
+
+.profile{
+    display:grid;
+    grid-template-columns:50% 50%;
+    width:inherit;
+    border:1px solid black;
+
+    .profile-image{
+        height:100px;
+        width:100%;
+
+        .profile-name{
+            width:100%;
+            height:100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        img{
+            height:auto;
+            width:100px;
+        }
+
+    }
+    .score-group{
+        height:100%;
+        width:100%;
+        display: grid;
+        grid-template-areas: 'ent score'
+                              'ent scored';
+        grid-template-columns: 25% 75%;
+
+        .profile-enter{
+            display: grid;
+            grid-area: ent;
+        }
+        .profile-scored{
+            display: grid;
+            grid-area: score;
+            
+        }
+        .profile-scored{
+            display: grid;
+            grid-area: scored;
+            
+        }
+    }
+}
+
+
+input,.input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width:100%;
+    height: 100%;
+    font-size: 2em;
+    border:none;
+}
