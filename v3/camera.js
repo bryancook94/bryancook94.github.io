@@ -37,7 +37,7 @@ async function startCamera(node) {
 }
 
 function countdownAndCapture(video,node) {
-    let countdown = 2;
+    let countdown = 8;
     const countdownElement = document.getElementById('countdown');
 
     const interval = setInterval(() => {
