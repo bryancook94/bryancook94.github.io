@@ -2,9 +2,10 @@
 
 .profile{
     display:grid;
-    grid-template-columns:50% 50%;
+    grid-template-columns:30% 70%;
     width:inherit;
     border:1px solid black;
+    margin: 2em 1em;
 
     .profile-image{
         height:100px;
@@ -26,13 +27,18 @@
         height:100%;
         width:100%;
         display: grid;
-        grid-template-areas: 'ent score'
-                              'ent scored';
-        grid-template-columns: 25% 75%;
+        grid-template-areas: 'ent color score del'
+                              'ent color scored del';
+        grid-template-columns: 20% 20% 40% 20%;
 
+        
         .profile-enter{
             display: grid;
             grid-area: ent;
+        }
+        .profile-color{
+            display: grid;
+            grid-area: color;
         }
         .profile-scored{
             display: grid;
@@ -44,10 +50,24 @@
             grid-area: scored;
             
         }
+        .profile-del{
+            display: grid;
+            grid-area: del;
+            
+        }
     }
 }
 
+.profile-add{
+    display: flex;
+    justify-content: center;
+    min-height: 50px;
+    align-items: center;
 
+    div{
+        padding-left: 10px;
+    }
+}
 input,.input{
     display: flex;
     align-items: center;
@@ -55,6 +75,6 @@ input,.input{
     text-align: center;
     width:100%;
     height: 100%;
-    font-size: 2em;
+    font-size: 1em;
     border:none;
 }

@@ -73,3 +73,6 @@ function drawTheGraph(){
               .attr("dy", ".35em")
               .text("Player 2");
 }
+
+
+

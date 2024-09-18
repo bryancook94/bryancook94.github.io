@@ -16,29 +16,67 @@ function moveContent(event) {
     document.getElementById(`container`).style.gridTemplateColumns=`${xPercent}% ${100-xPercent}%`;
     document.getElementById(`container`).style.gridTemplateRows=`${yPercent}% ${100-yPercent}%`;
     
+  //  document.querySelector('svg').setAttribute("width",`${Math.floor(event.clientX)}`);
+  //  document.querySelector('svg').setAttribute("height",`${Math.floor(event.clientY)}`);
+
 }
 
-document.addEventListener('mousemove',moveContent);
+// on click add 
+document.getElementById('dot').addEventListener('click',()=>{
+    document.getElementById('dot').style.background="green";
+    document.addEventListener('mousemove',moveContent);
+
+})
 
 
-document.addEventListener('dblclick', function() {
-    console.log("removeEventListener");
+
+//on double click remove
+document.getElementById('dot').addEventListener('dblclick', function() {
+    document.getElementById('dot').style.background="red";
     document.removeEventListener('mousemove', moveContent);
+
+    drawTheGraph();
 });
 
 
+function eval(elem){
+    let score = elem.parentNode.querySelector('.profile-score input');
+    let scored = elem.parentNode.querySelector('.profile-scored input');
+    console.log(score,scored,elem)   
 
-function hasEventListener(element, eventType) {
-    const listeners = getEventListeners(element);
-    return listeners && listeners[eventType] && listeners[eventType].length > 0;
+    let action='';
+    let value='';
+
+    if(scored.value!=''){
+          action=scored.value[0];
+          value=scored.value.substring(1);
+    }
+    console.log(action,value)   
+
+    if(action=="+" && isIntegerNumber(score.value) && isIntegerNumber(value)){
+          //the reset is a numnber
+          score.value=parseInt(score.value)+parseInt(value);
+          drawTheGraph();
+    }
+    if(action=="-" && isIntegerNumber(score.value) && isIntegerNumber(value)){
+        if(parseInt(score.value)>0){
+            score.value=parseInt(score.value)-parseInt(value);
+            drawTheGraph();
+        }
+        else{
+            console.log('score is negative')
+      }
+  
+    }
+    else{
+          console.log('no action')
+    }
+
+    return
 }
 
-// Example usage:
-const element = document.querySelector('#your-element-id');
-const eventType = 'click';
 
-if (hasEventListener(element, eventType)) {
-    console.log(`The element already has a ${eventType} event listener.`);
-} else {
-    console.log(`The element does not have a ${eventType} event listener.`);
+function isIntegerNumber(value) {
+    let test=parseInt(value)
+    return typeof test === 'number' && !Number.isNaN(test) && value.replace(/[0-9]/gi,"").length==0;
 }

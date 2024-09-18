@@ -2,6 +2,7 @@
 
 async function addNewPlayer(val){
     let players=[...document.querySelectorAll(`div[id^="player"]`)].map((item,pos)=>{return parseInt(item.getAttribute("id").replace("player",""))})
+    if(players.length==0){players=[0]}
     let playerID=Math.max(...players)+1
     document.getElementById('bottom-right').insertAdjacentHTML(`beforeEnd`,`
     <div class="profile padding">
@@ -9,9 +10,11 @@ async function addNewPlayer(val){
             <div class="profile-name"></div>
         </div>
         <div class="score-group">
-            <div class="profile-enter input border">ENT</div>
+            <div class="profile-enter input border" onclick="eval(this)"><i class="fa-solid fa-arrow-left"></i></div>
+            <div class="profile-color input border"><div class="clr-field"><button type="button" aria-labelledby="clr-open-label"></button><input type="text" data-coloris=""></div></div>
             <div class="profile-score border"><input type="text" value=""></div>
             <div class="profile-scored border"><input type="text" value=""></div>
+            <div class="profile-del input border" onclick="remove(this)"><i class="fa-solid fa-delete-left"></i></div>
         </div>
     </div>
     `)
@@ -37,7 +40,7 @@ async function startCamera(node) {
 }
 
 function countdownAndCapture(video,node) {
-    let countdown = 8;
+    let countdown = 2;
     const countdownElement = document.getElementById('countdown');
 
     const interval = setInterval(() => {
@@ -67,10 +70,17 @@ function takePicture(video,node) {
 }
 
 function drawTheGraph(){
-    //{ player: 'Player 1', score: 80 }
+    //{ player: 'Player 1', score: 80 ,color:'red'}
+    let rec=document.getElementById('top-left').getBoundingClientRect()
+    document.querySelector('svg').setAttribute("width",`${Math.floor(rec.width)}`);
+    document.querySelector('svg').setAttribute("height",`${Math.floor(rec.height)}`);
 
     const data = [...document.querySelectorAll(`div[id^="player"]`)].map((item,pos)=>{
-        return {player:item.getAttribute("id"),score:57}
+        return {
+            player:item.getAttribute("id"),
+            score:(item.parentNode.querySelector('.profile-score input').value==''? 301 :parseInt(item.parentNode.querySelector('.profile-score input').value)),
+            color:(item.parentNode.querySelector('.profile-color input').value==''?'steelblue':item.parentNode.querySelector('.profile-color input').value)
+        }
     })
         document.querySelector('svg').innerHTML=null;
       
@@ -112,8 +122,9 @@ function drawTheGraph(){
        .attr("y", d => y(d.score))
        .attr("width", x.bandwidth())
        .attr("height", d => height - y(d.score))
-       .attr("fill", (d, i) => i === 0 ? "steelblue" : "orange");
+       .attr("fill", (d, i) => d.color);
       
+       /*
       const legend = svg.append("g")
                         .attr("class", "legend")
                         .attr("transform", `translate(${width - 100},${margin.top})`);
@@ -143,5 +154,13 @@ function drawTheGraph(){
             .attr("y", 33)
             .attr("dy", ".35em")
             .text("Player 2");
+            */
     return 
 }
+
+function remove(node){
+    node.closest(".profile").remove()
+    return
+}
+
+window.drawTheGraph=drawTheGraph;
