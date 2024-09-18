@@ -46,6 +46,9 @@ function eval(elem){
 
     let action='';
     let value='';
+    if(scored.value=='' && parseInt(score.value)>=0){
+        findFinishCreate(parseInt(score.value))
+    }
 
     if(scored.value!=''){
           action=scored.value[0];

@@ -1,34 +1,7 @@
 
-
-
-let data=[    [
-    {
-        "double": 5
-    },
-    {
-        "single": 2
-    },
-    {
-        "single": 1
-    }
-],
-[
-    {
-        "double": 5
-    },
-    {
-        "single": 3
-    }
-]/*,
-[
-    {
-        "double": 6
-    },
-    {
-        "single": 1
-    }
-]*/]
+let data=findFinish(4)
 let result={};
+let resultSVG={};
 let temp;
 
 function findFinish(val){
@@ -63,7 +36,7 @@ function findFinish(val){
         let d2=Object.values(dart2[i])[0]*d2x;
         let d3=Object.values(dart3[j])[0]*d3x;
         
-        //console.log(sn-sdx-d2-d3,`${sn}-${sdx}-${d2}-${d3}`)
+        //console.log(sn-sdx-d2-d3,${sn}-${sdx}-${d2}-${d3})
         
         if((sn-sdx)==0){validAnswer=[startingDouble]}
         if((sn-sdx-d2)==0){validAnswer=[startingDouble,dart2[i]]}
@@ -115,26 +88,17 @@ function findFinish(val){
         
         return ppp
   }
-  
 
 function create(arrOfThrows){
-    /*
-    expects this arr
-    [
-    {
-        "double": 1
-    },
-    {
-        "double": 1
-    },
-    {
-        "triple": 3
-    }
-]
-    */
+
     for(let i=0;i<arrOfThrows.length;i++){
         let key=Object.keys(arrOfThrows[i])[0];
         let val=Object.values(arrOfThrows[i])[0];
+
+        console.log(`dart-${i+1}`,`${key.substring(0,1)}${val}`)
+        if(resultSVG[`dart-${i+1}`]==undefined){resultSVG[`dart-${i+1}`]=[]}
+            resultSVG[`dart-${i+1}`].push(`${key.substring(0,1)}${val}`)
+
 
         if(i==0){temp=undefined};
         if(temp==undefined){
@@ -142,13 +106,24 @@ function create(arrOfThrows){
                 result[key]={};
                 result[key][val]={};
                 temp=result[key][val];
-                console.log("a",i,temp)
+                //console.log("a",i,temp);
                 continue;
             }
             if(result[key]!==undefined){
-                result[key][val]={};
-                temp=result[key][val];
-                console.log("b",i,temp)
+                //result[key][val]={};
+                //temp=result[key][val];
+                //console.log("b",i,temp)
+
+                if(result[key][val]!==undefined){
+                    temp=result[key][val];
+                    //console.log("b1",i,temp)
+                }
+                else{
+                    result[key][val]={};
+                    temp=result[key][val];
+                    //console.log("b2",i,temp)
+                }
+
             }
         }
         else {
@@ -156,15 +131,20 @@ function create(arrOfThrows){
                 temp[key]={};
                 temp[key][val]={};
                 temp=temp[key][val];
-                console.log("c",i,temp)
+                //console.log("c",i,temp)
             }
             if(temp[key]!==undefined){
-                temp[key][val]={};
-                temp=result[key][val];
-                console.log("d",i,temp)
+                if(temp[key][val]!==undefined){
+                    temp=temp[key][val];
+                    //console.log("d1",i,temp)
+                }
+                else{
+                    temp[key][val]={};
+                    temp=temp[key][val];
+                    //console.log("d2",i,temp)
+                }
             }
         }
-    
     
         //console.log(result,i);
     }
@@ -173,9 +153,61 @@ return
 }
 
 for(let i=0;i<data.length;i++){
-    create(data[i]);        
+
+    let arr=data[i];
+    arr.reverse();
+    create(arr);        
 }        
 
 console.log(result)
+
+
+{
+    "single": {
+        "1": {
+            "single": {
+                "1": {
+                    "double": {
+                        "1": {}
+                    }
+                }
+            }
+        },
+        "2": {
+            "double": {
+                "1": {}
+            }
+        }
+    },
+    "double": {
+        "1": {
+            "double": {
+                "1": {}
+            }
+        },
+        "2": {}
+    }
+}
+
+
+{
+    "dart-1": [
+        "s1",
+        "d1",
+        "s2",
+        "d2"
+    ],
+    "dart-2": [
+        "s1",
+        "d1",
+        "d1"
+    ],
+    "dart-3": [
+        "d1"
+    ]
+}
+
+
+[...document.querySelectorAll(`#areas path[id^="s"],#areas path[id^="d"],#areas path[id^="t"]`)].forEach((item)=>{item.setAttribute("fill","#d6d4d4")})
 
 

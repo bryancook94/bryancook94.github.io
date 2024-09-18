@@ -12,7 +12,7 @@ async function addNewPlayer(val){
         <div class="score-group">
             <div class="profile-enter input border" onclick="eval(this)"><i class="fa-solid fa-arrow-left"></i></div>
             <div class="profile-color input border"><div class="clr-field"><button type="button" aria-labelledby="clr-open-label"></button><input type="text" data-coloris=""></div></div>
-            <div class="profile-score border"><input type="text" value=""></div>
+            <div class="profile-score border"><input type="text" value="301"></div>
             <div class="profile-scored border"><input type="text" value=""></div>
             <div class="profile-del input border" onclick="remove(this)"><i class="fa-solid fa-delete-left"></i></div>
         </div>
